@@ -1,0 +1,1644 @@
+{
+  "1-q-p0-name": [
+    {
+      "text": "CoderA",
+      "value": "CoderA"
+    },
+    {
+      "text": "CoderB",
+      "value": "CoderB"
+    }
+  ],
+  "9-q-p1-major-2-measurementtype": [
+    {
+      "text": "Active",
+      "value": "Active"
+    },
+    {
+      "text": "Passive",
+      "value": "Passive"
+    },
+    {
+      "text": "Real-User Data",
+      "value": "Real-User Data"
+    }
+  ],
+  "12-q-p1-major-5-datasetsource": [
+    {
+      "text": "DB/Archive",
+      "value": "DB/Archive"
+    },
+    {
+      "text": "Live Crawl",
+      "value": "Live Crawl"
+    }
+  ],
+  "13-q-p1-major-6-datasetused": [
+    {
+      "text": "CommonCrawl",
+      "value": "CommonCrawl"
+    },
+    {
+      "text": "HTTPArchive",
+      "value": "HTTPArchive"
+    },
+    {
+      "text": "Internet Archive",
+      "value": "Internet Archive"
+    },
+    {
+      "text": "Netograph",
+      "value": "Netograph"
+    },
+    {
+      "text": "Other Paper",
+      "value": "Other Paper"
+    }
+  ],
+  "14-q-p1-major-7-crawlpercentage": [
+    {
+      "text": "major",
+      "value": "major"
+    },
+    {
+      "text": "minor",
+      "value": "minor"
+    },
+    {
+      "text": "only",
+      "value": "only"
+    }
+  ],
+  "15-q-p1-major-8-crawlpurpose": [
+    {
+      "text": "Evaluating existing crawling setups/tools",
+      "value": "Evaluating existing crawling setups/tools"
+    },
+    {
+      "text": "Evaluating proposed tool/defense/attack/classifier",
+      "value": "Evaluating proposed tool/defense/attack/classifier"
+    },
+    {
+      "text": "Measure Prevalence (main result)",
+      "value": "Measure Prevalence (main result)"
+    },
+    {
+      "text": "Measure Prevalence (side experiment/feasibility)",
+      "value": "Measure Prevalence (side experiment/feasibility)"
+    },
+    {
+      "text": "Pre-requiste (dataset creation)",
+      "value": "Pre-requiste (dataset creation)"
+    }
+  ],
+  "17-q-p2-dataset-website-1-list": [
+    {
+      "text": "\"User\" Content URLs (e.g.; Reddit; Wikipedia)",
+      "value": "\"User\" Content URLs (e.g.; Reddit; Wikipedia)"
+    },
+    {
+      "text": "AOL Query Log",
+      "value": "AOL Query Log"
+    },
+    {
+      "text": "Alexa",
+      "value": "Alexa"
+    },
+    {
+      "text": "Certificate Transparency Logs",
+      "value": "Certificate Transparency Logs"
+    },
+    {
+      "text": "Company provided list of URLs",
+      "value": "Company provided list of URLs"
+    },
+    {
+      "text": "CrUX",
+      "value": "CrUX"
+    },
+    {
+      "text": "Large-Scale Crawl project (e.g.; CommonCrawl)",
+      "value": "Large-Scale Crawl project (e.g.; CommonCrawl)"
+    },
+    {
+      "text": "List from other paper",
+      "value": "List from other paper"
+    },
+    {
+      "text": "Majestic",
+      "value": "Majestic"
+    },
+    {
+      "text": "Manual list creation",
+      "value": "Manual list creation"
+    },
+    {
+      "text": "Phishing URL database",
+      "value": "Phishing URL database"
+    },
+    {
+      "text": "Privacy block list",
+      "value": "Privacy block list"
+    },
+    {
+      "text": "SimilarWeb",
+      "value": "SimilarWeb"
+    },
+    {
+      "text": "Tranco",
+      "value": "Tranco"
+    },
+    {
+      "text": "Unclear",
+      "value": "Unclear"
+    },
+    {
+      "text": "WHOISD",
+      "value": "WHOISD"
+    },
+    {
+      "text": "Web Search (e.g.; Google; Baidu)",
+      "value": "Web Search (e.g.; Google; Baidu)"
+    }
+  ],
+  "20-q-p2-dataset-website-3-subsetsampling": [
+    {
+      "text": "Account creation possible",
+      "value": "Account creation possible"
+    },
+    {
+      "text": "Bottom N",
+      "value": "Bottom N"
+    },
+    {
+      "text": "Not applicable",
+      "value": "Not applicable"
+    },
+    {
+      "text": "Random Sample (various)",
+      "value": "Random Sample (various)"
+    },
+    {
+      "text": "Top N",
+      "value": "Top N"
+    },
+    {
+      "text": "Unclear",
+      "value": "Unclear"
+    }
+  ],
+  "23-q-p2-dataset-webpage-1-starting": [
+    {
+      "text": "Domain to Landing Page conversion specified",
+      "value": "Domain to Landing Page conversion specified"
+    },
+    {
+      "text": "List provides URLs",
+      "value": "List provides URLs"
+    },
+    {
+      "text": "NA",
+      "value": "NA"
+    },
+    {
+      "text": "Unclear/not reported",
+      "value": "Unclear/not reported"
+    },
+    {
+      "text": "Well-Known URL (e.g.; /robots.txt)",
+      "value": "Well-Known URL (e.g.; /robots.txt)"
+    }
+  ],
+  "25-q-p2-dataset-webpage-3-internalselection": [
+    {
+      "text": "BFS",
+      "value": "BFS"
+    },
+    {
+      "text": "Custom Logic (can be externally enhanced e.g.; web search or IA matches; or keyword heuristics on the page; ...)",
+      "value": "Custom Logic (can be externally enhanced e.g.; web search or IA matches; or keyword heuristics on the page; ...)"
+    },
+    {
+      "text": "DFS",
+      "value": "DFS"
+    },
+    {
+      "text": "Fixed paths",
+      "value": "Fixed paths"
+    },
+    {
+      "text": "Links on homepage",
+      "value": "Links on homepage"
+    },
+    {
+      "text": "Random Crawl",
+      "value": "Random Crawl"
+    },
+    {
+      "text": "Unclear",
+      "value": "Unclear"
+    }
+  ],
+  "28-q-p2-dataset-webpage-5-internallock": [
+    {
+      "text": "First-Party Lock",
+      "value": "First-Party Lock"
+    },
+    {
+      "text": "In-Site Webpage",
+      "value": "In-Site Webpage"
+    },
+    {
+      "text": "Internal",
+      "value": "Internal"
+    },
+    {
+      "text": "NA",
+      "value": "NA"
+    },
+    {
+      "text": "Reported no",
+      "value": "Reported no"
+    },
+    {
+      "text": "Same-Domain Lock",
+      "value": "Same-Domain Lock"
+    },
+    {
+      "text": "Same-Origin Lock",
+      "value": "Same-Origin Lock"
+    },
+    {
+      "text": "Same-Site Lock",
+      "value": "Same-Site Lock"
+    },
+    {
+      "text": "Unclear/not reported",
+      "value": "Unclear/not reported"
+    }
+  ],
+  "29-q-p2-dataset-webpage-6-robots": [
+    {
+      "text": "Reported No",
+      "value": "Reported No"
+    },
+    {
+      "text": "Unclear/not reported",
+      "value": "Unclear/not reported"
+    },
+    {
+      "text": "Yes",
+      "value": "Yes"
+    }
+  ],
+  "32-q-p2-setup-implementation-3-automation": [
+    {
+      "text": "ADB",
+      "value": "ADB"
+    },
+    {
+      "text": "Appium",
+      "value": "Appium"
+    },
+    {
+      "text": "CDP",
+      "value": "CDP"
+    },
+    {
+      "text": "Custom Bash Scripts",
+      "value": "Custom Bash Scripts"
+    },
+    {
+      "text": "Custom Browser Extension",
+      "value": "Custom Browser Extension"
+    },
+    {
+      "text": "OpenWPM",
+      "value": "OpenWPM"
+    },
+    {
+      "text": "Playwright",
+      "value": "Playwright"
+    },
+    {
+      "text": "Puppeteer",
+      "value": "Puppeteer"
+    },
+    {
+      "text": "Selenium",
+      "value": "Selenium"
+    },
+    {
+      "text": "Unclear/not reported",
+      "value": "Unclear/not reported"
+    }
+  ],
+  "34-q-p2-setup-implementation-5-browserused": [
+    {
+      "text": "Brave",
+      "value": "Brave"
+    },
+    {
+      "text": "Chrome",
+      "value": "Chrome"
+    },
+    {
+      "text": "Chromium",
+      "value": "Chromium"
+    },
+    {
+      "text": "DuckDuckGo",
+      "value": "DuckDuckGo"
+    },
+    {
+      "text": "Edge",
+      "value": "Edge"
+    },
+    {
+      "text": "Firefox",
+      "value": "Firefox"
+    },
+    {
+      "text": "Firefox Focus",
+      "value": "Firefox Focus"
+    },
+    {
+      "text": "Ghostery",
+      "value": "Ghostery"
+    },
+    {
+      "text": "Own Chromium-fork",
+      "value": "Own Chromium-fork"
+    },
+    {
+      "text": "Tor",
+      "value": "Tor"
+    },
+    {
+      "text": "Unclear/not reported",
+      "value": "Unclear/not reported"
+    },
+    {
+      "text": "unspecified chromium-based",
+      "value": "unspecified chromium-based"
+    }
+  ],
+  "36-q-p2-setup-implementation-6-browserinstrumentation": [
+    {
+      "text": "Browser Extension",
+      "value": "Browser Extension"
+    },
+    {
+      "text": "CDP",
+      "value": "CDP"
+    },
+    {
+      "text": "Custom JS-injection",
+      "value": "Custom JS-injection"
+    },
+    {
+      "text": "Custom browser modifications",
+      "value": "Custom browser modifications"
+    },
+    {
+      "text": "Foxhound",
+      "value": "Foxhound"
+    },
+    {
+      "text": "Jalangi2",
+      "value": "Jalangi2"
+    },
+    {
+      "text": "Linvail",
+      "value": "Linvail"
+    },
+    {
+      "text": "None",
+      "value": "None"
+    },
+    {
+      "text": "Pagegraph",
+      "value": "Pagegraph"
+    },
+    {
+      "text": "Panoptichrome",
+      "value": "Panoptichrome"
+    },
+    {
+      "text": "Puppeteer",
+      "value": "Puppeteer"
+    },
+    {
+      "text": "Selenium",
+      "value": "Selenium"
+    },
+    {
+      "text": "Unclear/not reported",
+      "value": "Unclear/not reported"
+    },
+    {
+      "text": "V8",
+      "value": "V8"
+    },
+    {
+      "text": "WebPageTest",
+      "value": "WebPageTest"
+    }
+  ],
+  "38-q-p2-setup-implementation-8-headless": [
+    {
+      "text": "Headfull",
+      "value": "Headfull"
+    },
+    {
+      "text": "Headless",
+      "value": "Headless"
+    },
+    {
+      "text": "Unclear/not reported",
+      "value": "Unclear/not reported"
+    }
+  ],
+  "39-q-p2-setup-implementation-9-dimensions": [
+    {
+      "text": "1024x800",
+      "value": "1024x800"
+    },
+    {
+      "text": "1366x768",
+      "value": "1366x768"
+    },
+    {
+      "text": "1920x1080",
+      "value": "1920x1080"
+    },
+    {
+      "text": "Unclear/not reported",
+      "value": "Unclear/not reported"
+    }
+  ],
+  "40-q-p2-setup-implementation-10-incognito": [
+    {
+      "text": "No",
+      "value": "No"
+    },
+    {
+      "text": "Unclear/not reported",
+      "value": "Unclear/not reported"
+    }
+  ],
+  "42-q-p2-setup-implementation-12-crawlertype": [
+    {
+      "text": "Custom-Code",
+      "value": "Custom-Code"
+    },
+    {
+      "text": "Finished Crawler",
+      "value": "Finished Crawler"
+    },
+    {
+      "text": "Unclear/not reported",
+      "value": "Unclear/not reported"
+    }
+  ],
+  "47-q-p2-setup-env-1-platform": [
+    {
+      "text": "Android (fake user-agent and co on desktop)",
+      "value": "Android (fake user-agent and co on desktop)"
+    },
+    {
+      "text": "Android (real phone)",
+      "value": "Android (real phone)"
+    },
+    {
+      "text": "Linux",
+      "value": "Linux"
+    },
+    {
+      "text": "Unclear/not reported",
+      "value": "Unclear/not reported"
+    },
+    {
+      "text": "Windows",
+      "value": "Windows"
+    }
+  ],
+  "48-q-p2-setup-env-2-ip": [
+    {
+      "text": "Cloud",
+      "value": "Cloud"
+    },
+    {
+      "text": "Residential",
+      "value": "Residential"
+    },
+    {
+      "text": "Unclear/not reported",
+      "value": "Unclear/not reported"
+    },
+    {
+      "text": "University",
+      "value": "University"
+    },
+    {
+      "text": "Unspecified non-residential",
+      "value": "Unspecified non-residential"
+    },
+    {
+      "text": "VPN",
+      "value": "VPN"
+    }
+  ],
+  "49-q-p2-setup-env-3-iprot": [
+    {
+      "text": "No",
+      "value": "No"
+    },
+    {
+      "text": "Unclear/not reported",
+      "value": "Unclear/not reported"
+    },
+    {
+      "text": "Yes",
+      "value": "Yes"
+    }
+  ],
+  "50-q-p2-setup-env-4-geo": [
+    {
+      "text": "Africa",
+      "value": "Africa"
+    },
+    {
+      "text": "Asia",
+      "value": "Asia"
+    },
+    {
+      "text": "Australia",
+      "value": "Australia"
+    },
+    {
+      "text": "Brazil",
+      "value": "Brazil"
+    },
+    {
+      "text": "California",
+      "value": "California"
+    },
+    {
+      "text": "China",
+      "value": "China"
+    },
+    {
+      "text": "Europe",
+      "value": "Europe"
+    },
+    {
+      "text": "Germany",
+      "value": "Germany"
+    },
+    {
+      "text": "India",
+      "value": "India"
+    },
+    {
+      "text": "Japan",
+      "value": "Japan"
+    },
+    {
+      "text": "Middle East",
+      "value": "Middle East"
+    },
+    {
+      "text": "Sweden",
+      "value": "Sweden"
+    },
+    {
+      "text": "Taiwan",
+      "value": "Taiwan"
+    },
+    {
+      "text": "US",
+      "value": "US"
+    },
+    {
+      "text": "Unclear/not reported",
+      "value": "Unclear/not reported"
+    },
+    {
+      "text": "Western US",
+      "value": "Western US"
+    }
+  ],
+  "52-q-p2-setup-1-state": [
+    {
+      "text": "Deleted/fresh profile",
+      "value": "Deleted/fresh profile"
+    },
+    {
+      "text": "State accumulated",
+      "value": "State accumulated"
+    },
+    {
+      "text": "Unclear/not reported",
+      "value": "Unclear/not reported"
+    }
+  ],
+  "54-q-p2-setup-3-auth": [
+    {
+      "text": "No",
+      "value": "No"
+    },
+    {
+      "text": "Unclear/not reported",
+      "value": "Unclear/not reported"
+    },
+    {
+      "text": "Yes (auto)",
+      "value": "Yes (auto)"
+    },
+    {
+      "text": "Yes (manual)",
+      "value": "Yes (manual)"
+    }
+  ],
+  "55-q-p2-setup-4-addactions": [
+    {
+      "text": "Cookie Interaction",
+      "value": "Cookie Interaction"
+    },
+    {
+      "text": "Creating a seed profile (visiting various pages)",
+      "value": "Creating a seed profile (visiting various pages)"
+    },
+    {
+      "text": "No",
+      "value": "No"
+    },
+    {
+      "text": "Visiting some other sites in different tabs",
+      "value": "Visiting some other sites in different tabs"
+    }
+  ],
+  "58-q-p2-process-3-pageload": [
+    {
+      "text": "120s",
+      "value": "120s"
+    },
+    {
+      "text": "15s",
+      "value": "15s"
+    },
+    {
+      "text": "180s",
+      "value": "180s"
+    },
+    {
+      "text": "1s",
+      "value": "1s"
+    },
+    {
+      "text": "2s",
+      "value": "2s"
+    },
+    {
+      "text": "300s",
+      "value": "300s"
+    },
+    {
+      "text": "30s",
+      "value": "30s"
+    },
+    {
+      "text": "5s",
+      "value": "5s"
+    },
+    {
+      "text": "90s",
+      "value": "90s"
+    },
+    {
+      "text": "Average times reported",
+      "value": "Average times reported"
+    },
+    {
+      "text": "Default",
+      "value": "Default"
+    },
+    {
+      "text": "Infinite?",
+      "value": "Infinite?"
+    },
+    {
+      "text": "Not applicable",
+      "value": "Not applicable"
+    },
+    {
+      "text": "Specified",
+      "value": "Specified"
+    },
+    {
+      "text": "Unclear/not reported",
+      "value": "Unclear/not reported"
+    }
+  ],
+  "60-q-p2-process-4-pagestay": [
+    {
+      "text": "0s",
+      "value": "0s"
+    },
+    {
+      "text": "Average times reported",
+      "value": "Average times reported"
+    },
+    {
+      "text": "Combined time (load + stay) only",
+      "value": "Combined time (load + stay) only"
+    },
+    {
+      "text": "Not applicable",
+      "value": "Not applicable"
+    },
+    {
+      "text": "Random delay 10 to 30 seconds",
+      "value": "Random delay 10 to 30 seconds"
+    },
+    {
+      "text": "Specified",
+      "value": "Specified"
+    },
+    {
+      "text": "Unclear/not reported",
+      "value": "Unclear/not reported"
+    }
+  ],
+  "63-q-p2-process-6-pageinteractiondetails": [
+    {
+      "text": "Checkout",
+      "value": "Checkout"
+    },
+    {
+      "text": "Click",
+      "value": "Click"
+    },
+    {
+      "text": "Cookie Banner interaction",
+      "value": "Cookie Banner interaction"
+    },
+    {
+      "text": "SSO interaction",
+      "value": "SSO interaction"
+    },
+    {
+      "text": "Scroll",
+      "value": "Scroll"
+    },
+    {
+      "text": "Various",
+      "value": "Various"
+    }
+  ],
+  "64-q-p2-process-7-datacollected": [
+    {
+      "text": "API invocations",
+      "value": "API invocations"
+    },
+    {
+      "text": "Accessibility tree",
+      "value": "Accessibility tree"
+    },
+    {
+      "text": "Advertising bids",
+      "value": "Advertising bids"
+    },
+    {
+      "text": "Call Stack Traces",
+      "value": "Call Stack Traces"
+    },
+    {
+      "text": "Chromium NetLog",
+      "value": "Chromium NetLog"
+    },
+    {
+      "text": "Cookies",
+      "value": "Cookies"
+    },
+    {
+      "text": "DOM",
+      "value": "DOM"
+    },
+    {
+      "text": "Flash resources",
+      "value": "Flash resources"
+    },
+    {
+      "text": "Forms",
+      "value": "Forms"
+    },
+    {
+      "text": "HTML",
+      "value": "HTML"
+    },
+    {
+      "text": "HTTP Archive files",
+      "value": "HTTP Archive files"
+    },
+    {
+      "text": "Headers",
+      "value": "Headers"
+    },
+    {
+      "text": "IP addresses",
+      "value": "IP addresses"
+    },
+    {
+      "text": "Images",
+      "value": "Images"
+    },
+    {
+      "text": "IndexedDB",
+      "value": "IndexedDB"
+    },
+    {
+      "text": "JS Inclusions",
+      "value": "JS Inclusions"
+    },
+    {
+      "text": "Links",
+      "value": "Links"
+    },
+    {
+      "text": "Local Storage",
+      "value": "Local Storage"
+    },
+    {
+      "text": "Meta information (page dimensions; font size / colors; coordinates)",
+      "value": "Meta information (page dimensions; font size / colors; coordinates)"
+    },
+    {
+      "text": "Network messages",
+      "value": "Network messages"
+    },
+    {
+      "text": "Page Title",
+      "value": "Page Title"
+    },
+    {
+      "text": "PageGraph",
+      "value": "PageGraph"
+    },
+    {
+      "text": "Performance: timing and memory",
+      "value": "Performance: timing and memory"
+    },
+    {
+      "text": "PostMessages",
+      "value": "PostMessages"
+    },
+    {
+      "text": "PrototypePollution Vulns",
+      "value": "PrototypePollution Vulns"
+    },
+    {
+      "text": "Redirects",
+      "value": "Redirects"
+    },
+    {
+      "text": "Request Chains",
+      "value": "Request Chains"
+    },
+    {
+      "text": "Resource inclusion tree",
+      "value": "Resource inclusion tree"
+    },
+    {
+      "text": "Response content",
+      "value": "Response content"
+    },
+    {
+      "text": "SSO logs",
+      "value": "SSO logs"
+    },
+    {
+      "text": "Screenshots",
+      "value": "Screenshots"
+    },
+    {
+      "text": "SessionStorage",
+      "value": "SessionStorage"
+    },
+    {
+      "text": "Status Codes",
+      "value": "Status Codes"
+    },
+    {
+      "text": "TLS certificates",
+      "value": "TLS certificates"
+    },
+    {
+      "text": "Taint Flows",
+      "value": "Taint Flows"
+    },
+    {
+      "text": "Third-Party Request URLs",
+      "value": "Third-Party Request URLs"
+    },
+    {
+      "text": "Timing of network",
+      "value": "Timing of network"
+    },
+    {
+      "text": "Vulnerabilities",
+      "value": "Vulnerabilities"
+    },
+    {
+      "text": "WHOIS",
+      "value": "WHOIS"
+    },
+    {
+      "text": "WebAssembly",
+      "value": "WebAssembly"
+    },
+    {
+      "text": "WebSQL",
+      "value": "WebSQL"
+    },
+    {
+      "text": "pcap",
+      "value": "pcap"
+    },
+    {
+      "text": "robots.txt",
+      "value": "robots.txt"
+    },
+    {
+      "text": "security.txt",
+      "value": "security.txt"
+    },
+    {
+      "text": "traces",
+      "value": "traces"
+    },
+    {
+      "text": "wallet address",
+      "value": "wallet address"
+    }
+  ],
+  "65-q-p2-process-8-parallel": [
+    {
+      "text": "1",
+      "value": "1"
+    },
+    {
+      "text": "10",
+      "value": "10"
+    },
+    {
+      "text": "100",
+      "value": "100"
+    },
+    {
+      "text": "12",
+      "value": "12"
+    },
+    {
+      "text": "20",
+      "value": "20"
+    },
+    {
+      "text": "240",
+      "value": "240"
+    },
+    {
+      "text": "36",
+      "value": "36"
+    },
+    {
+      "text": "42",
+      "value": "42"
+    },
+    {
+      "text": "5-6",
+      "value": "5-6"
+    },
+    {
+      "text": "Unclear/not reported",
+      "value": "Unclear/not reported"
+    }
+  ],
+  "70-q-p2-crawlmultiple-2-multipledetails": [
+    {
+      "text": "Evaluation of different configurations",
+      "value": "Evaluation of different configurations"
+    },
+    {
+      "text": "Longitudinal study",
+      "value": "Longitudinal study"
+    },
+    {
+      "text": "Robustness (includes testing multiple datasets)",
+      "value": "Robustness (includes testing multiple datasets)"
+    }
+  ],
+  "71-q-p2-analysis-1-exclusion": [
+    {
+      "text": ".de domains",
+      "value": ".de domains"
+    },
+    {
+      "text": "4XX",
+      "value": "4XX"
+    },
+    {
+      "text": "5XX",
+      "value": "5XX"
+    },
+    {
+      "text": "< 400 bytes",
+      "value": "< 400 bytes"
+    },
+    {
+      "text": "Browser-initiated URLs",
+      "value": "Browser-initiated URLs"
+    },
+    {
+      "text": "CMPs without bidding",
+      "value": "CMPs without bidding"
+    },
+    {
+      "text": "Custom heuristics",
+      "value": "Custom heuristics"
+    },
+    {
+      "text": "DNS resolution failures",
+      "value": "DNS resolution failures"
+    },
+    {
+      "text": "Duplicated Pages",
+      "value": "Duplicated Pages"
+    },
+    {
+      "text": "Empty pages",
+      "value": "Empty pages"
+    },
+    {
+      "text": "Including an identifier cookie",
+      "value": "Including an identifier cookie"
+    },
+    {
+      "text": "Invalid/empty URLs",
+      "value": "Invalid/empty URLs"
+    },
+    {
+      "text": "No HTTP/2 connection",
+      "value": "No HTTP/2 connection"
+    },
+    {
+      "text": "No registration/login",
+      "value": "No registration/login"
+    },
+    {
+      "text": "No valid file",
+      "value": "No valid file"
+    },
+    {
+      "text": "Non-Successful",
+      "value": "Non-Successful"
+    },
+    {
+      "text": "Non-english",
+      "value": "Non-english"
+    },
+    {
+      "text": "Non-phishing",
+      "value": "Non-phishing"
+    },
+    {
+      "text": "Non-reachable",
+      "value": "Non-reachable"
+    },
+    {
+      "text": "Not applicable",
+      "value": "Not applicable"
+    },
+    {
+      "text": "Not including a UID",
+      "value": "Not including a UID"
+    },
+    {
+      "text": "Not including certain resources",
+      "value": "Not including certain resources"
+    },
+    {
+      "text": "Not returning security.txt file",
+      "value": "Not returning security.txt file"
+    },
+    {
+      "text": "Origins with less than 5 pages",
+      "value": "Origins with less than 5 pages"
+    },
+    {
+      "text": "Redirections",
+      "value": "Redirections"
+    },
+    {
+      "text": "SSO errors",
+      "value": "SSO errors"
+    },
+    {
+      "text": "Status Code 421",
+      "value": "Status Code 421"
+    },
+    {
+      "text": "Too small or too big pages",
+      "value": "Too small or too big pages"
+    },
+    {
+      "text": "Unclear/not reported",
+      "value": "Unclear/not reported"
+    },
+    {
+      "text": "manual",
+      "value": "manual"
+    },
+    {
+      "text": "none",
+      "value": "none"
+    },
+    {
+      "text": "not affected (anymore)",
+      "value": "not affected (anymore)"
+    },
+    {
+      "text": "not including certain scripts",
+      "value": "not including certain scripts"
+    },
+    {
+      "text": "same user profile but different token",
+      "value": "same user profile but different token"
+    }
+  ],
+  "72-q-p2-analysis-2-presentation": [
+    {
+      "text": "Case studies",
+      "value": "Case studies"
+    },
+    {
+      "text": "ML-style metrics: Precision",
+      "value": "ML-style metrics: Precision"
+    },
+    {
+      "text": "Proofs",
+      "value": "Proofs"
+    },
+    {
+      "text": "Statistical tests",
+      "value": "Statistical tests"
+    },
+    {
+      "text": "Stats",
+      "value": "Stats"
+    },
+    {
+      "text": "Total numbers",
+      "value": "Total numbers"
+    }
+  ],
+  "73-q-p3-problems-1-genreport": [
+    {
+      "text": "Not generalizable",
+      "value": "Not generalizable"
+    },
+    {
+      "text": "Nothing",
+      "value": "Nothing"
+    },
+    {
+      "text": "Partial",
+      "value": "Partial"
+    },
+    {
+      "text": "Yes",
+      "value": "Yes"
+    }
+  ],
+  "77-q-p3-factors-2-factorsloc": [
+    {
+      "text": "Limitations",
+      "value": "Limitations"
+    },
+    {
+      "text": "Methods",
+      "value": "Methods"
+    },
+    {
+      "text": "Other",
+      "value": "Other"
+    }
+  ],
+  "78-q-p3-factors-3-factorscat": [
+    {
+      "text": "Analysis & Reporting",
+      "value": "Analysis & Reporting"
+    },
+    {
+      "text": "Crawler Implementation",
+      "value": "Crawler Implementation"
+    },
+    {
+      "text": "Crawling Environment",
+      "value": "Crawling Environment"
+    },
+    {
+      "text": "Crawling Setup",
+      "value": "Crawling Setup"
+    },
+    {
+      "text": "Dataset",
+      "value": "Dataset"
+    },
+    {
+      "text": "Other/Ungrouped",
+      "value": "Other/Ungrouped"
+    }
+  ],
+  "79-q-p3-factors-4-dataset": [
+    {
+      "text": "Dataset issues",
+      "value": "Dataset issues"
+    },
+    {
+      "text": "Webpage selection/crawling strategy (C2)",
+      "value": "Webpage selection/crawling strategy (C2)"
+    },
+    {
+      "text": "Website selection (C1)",
+      "value": "Website selection (C1)"
+    }
+  ],
+  "80-q-p3-factors-5-implementation": [
+    {
+      "text": "Browser",
+      "value": "Browser"
+    },
+    {
+      "text": "Browser version (C13)",
+      "value": "Browser version (C13)"
+    },
+    {
+      "text": "Headless vs Headfull (C13)",
+      "value": "Headless vs Headfull (C13)"
+    },
+    {
+      "text": "Instrumentation technology",
+      "value": "Instrumentation technology"
+    },
+    {
+      "text": "Other browser settings (C13)",
+      "value": "Other browser settings (C13)"
+    },
+    {
+      "text": "Type of crawler",
+      "value": "Type of crawler"
+    },
+    {
+      "text": "User-Agent Sniffing/Spoofing",
+      "value": "User-Agent Sniffing/Spoofing"
+    }
+  ],
+  "81-q-p3-factors-6-env": [
+    {
+      "text": "Crawling Platform",
+      "value": "Crawling Platform"
+    },
+    {
+      "text": "Geolocation",
+      "value": "Geolocation"
+    },
+    {
+      "text": "IP",
+      "value": "IP"
+    }
+  ],
+  "82-q-p3-factors-7-process": [
+    {
+      "text": "Autenthication",
+      "value": "Autenthication"
+    },
+    {
+      "text": "Fresh profile vs accumulating state (C11)",
+      "value": "Fresh profile vs accumulating state (C11)"
+    },
+    {
+      "text": "Other non-trival state creation",
+      "value": "Other non-trival state creation"
+    },
+    {
+      "text": "Page interaction (C10)",
+      "value": "Page interaction (C10)"
+    },
+    {
+      "text": "Timeouts and how long to stay on a webpage",
+      "value": "Timeouts and how long to stay on a webpage"
+    }
+  ],
+  "83-q-p3-factors-8-reporting": [
+    {
+      "text": "Detection logic/classification/heuristics",
+      "value": "Detection logic/classification/heuristics"
+    },
+    {
+      "text": "Manual analysis",
+      "value": "Manual analysis"
+    },
+    {
+      "text": "Removal of data (e.g.; outlier)",
+      "value": "Removal of data (e.g.; outlier)"
+    }
+  ],
+  "84-q-p3-factors-9-other": [
+    {
+      "text": "Bot detection",
+      "value": "Bot detection"
+    },
+    {
+      "text": "General Web Randomness",
+      "value": "General Web Randomness"
+    },
+    {
+      "text": "Time of the crawl",
+      "value": "Time of the crawl"
+    }
+  ],
+  "86-q-p3-factortesting-2-which": [
+    {
+      "text": "Archives vs Live Measurement",
+      "value": "Archives vs Live Measurement"
+    },
+    {
+      "text": "Authentication",
+      "value": "Authentication"
+    },
+    {
+      "text": "Bot evasion (puppeteer-extra-stealth-plugin)",
+      "value": "Bot evasion (puppeteer-extra-stealth-plugin)"
+    },
+    {
+      "text": "Browser Instrumentation",
+      "value": "Browser Instrumentation"
+    },
+    {
+      "text": "Browser extension",
+      "value": "Browser extension"
+    },
+    {
+      "text": "Browser settings",
+      "value": "Browser settings"
+    },
+    {
+      "text": "Changes over time/longitudinal analysis",
+      "value": "Changes over time/longitudinal analysis"
+    },
+    {
+      "text": "Cookie Banner Interaction",
+      "value": "Cookie Banner Interaction"
+    },
+    {
+      "text": "Crawling strategy + parameters",
+      "value": "Crawling strategy + parameters"
+    },
+    {
+      "text": "Different sources of URLs",
+      "value": "Different sources of URLs"
+    },
+    {
+      "text": "Different types of crawlers",
+      "value": "Different types of crawlers"
+    },
+    {
+      "text": "Geolocation",
+      "value": "Geolocation"
+    },
+    {
+      "text": "IP address",
+      "value": "IP address"
+    },
+    {
+      "text": "Notification of websites of issus",
+      "value": "Notification of websites of issus"
+    },
+    {
+      "text": "Privacy Flag Opt-In/Out",
+      "value": "Privacy Flag Opt-In/Out"
+    },
+    {
+      "text": "Referer Header",
+      "value": "Referer Header"
+    },
+    {
+      "text": "Site rank",
+      "value": "Site rank"
+    },
+    {
+      "text": "Time (stability of live data)",
+      "value": "Time (stability of live data)"
+    },
+    {
+      "text": "User Interaction",
+      "value": "User Interaction"
+    },
+    {
+      "text": "User-Agent Header",
+      "value": "User-Agent Header"
+    },
+    {
+      "text": "UserProfile/history",
+      "value": "UserProfile/history"
+    },
+    {
+      "text": "Various Browsers",
+      "value": "Various Browsers"
+    },
+    {
+      "text": "Website categories",
+      "value": "Website categories"
+    }
+  ],
+  "89-q-p4-practices-2-limitationsloc": [
+    {
+      "text": "Other",
+      "value": "Other"
+    },
+    {
+      "text": "Own section",
+      "value": "Own section"
+    }
+  ],
+  "92-q-p4-practices-5-ethicsloc": [
+    {
+      "text": "Appendix",
+      "value": "Appendix"
+    },
+    {
+      "text": "Methods",
+      "value": "Methods"
+    },
+    {
+      "text": "Own section",
+      "value": "Own section"
+    },
+    {
+      "text": "Text",
+      "value": "Text"
+    }
+  ],
+  "94-q-p4-practices-6-5-avail": [
+    {
+      "text": "No such section",
+      "value": "No such section"
+    },
+    {
+      "text": "Open-Science or Similar Section (e.g.; Data release)",
+      "value": "Open-Science or Similar Section (e.g.; Data release)"
+    }
+  ],
+  "95-q-p4-practices-7-code": [
+    {
+      "text": "Dead link",
+      "value": "Dead link"
+    },
+    {
+      "text": "Empty repo",
+      "value": "Empty repo"
+    },
+    {
+      "text": "Missing link",
+      "value": "Missing link"
+    },
+    {
+      "text": "Not mentioned",
+      "value": "Not mentioned"
+    },
+    {
+      "text": "On request",
+      "value": "On request"
+    },
+    {
+      "text": "Partially",
+      "value": "Partially"
+    },
+    {
+      "text": "Yes",
+      "value": "Yes"
+    }
+  ],
+  "96-q-p4-practices-8-data": [
+    {
+      "text": "Empty repo",
+      "value": "Empty repo"
+    },
+    {
+      "text": "Missing link",
+      "value": "Missing link"
+    },
+    {
+      "text": "Not mentioned",
+      "value": "Not mentioned"
+    },
+    {
+      "text": "On request",
+      "value": "On request"
+    },
+    {
+      "text": "Partially",
+      "value": "Partially"
+    },
+    {
+      "text": "Yes",
+      "value": "Yes"
+    }
+  ],
+  "97-q-p4-practices-9-codewhere": [
+    {
+      "text": "Github",
+      "value": "Github"
+    },
+    {
+      "text": "Gitlab",
+      "value": "Gitlab"
+    },
+    {
+      "text": "Google Sites",
+      "value": "Google Sites"
+    },
+    {
+      "text": "Mega.nz",
+      "value": "Mega.nz"
+    },
+    {
+      "text": "Uni/instution website",
+      "value": "Uni/instution website"
+    },
+    {
+      "text": "Website specific for project",
+      "value": "Website specific for project"
+    },
+    {
+      "text": "Zenodo",
+      "value": "Zenodo"
+    },
+    {
+      "text": "anonymous.4open.science",
+      "value": "anonymous.4open.science"
+    }
+  ],
+  "98-q-p4-practices-10-datawhere": [
+    {
+      "text": "Big Query",
+      "value": "Big Query"
+    },
+    {
+      "text": "Dropbox",
+      "value": "Dropbox"
+    },
+    {
+      "text": "Github",
+      "value": "Github"
+    },
+    {
+      "text": "Gitlab",
+      "value": "Gitlab"
+    },
+    {
+      "text": "Googe Drive",
+      "value": "Googe Drive"
+    },
+    {
+      "text": "Google Drive",
+      "value": "Google Drive"
+    },
+    {
+      "text": "Google Sites",
+      "value": "Google Sites"
+    },
+    {
+      "text": "HuggingFace",
+      "value": "HuggingFace"
+    },
+    {
+      "text": "Personal Website",
+      "value": "Personal Website"
+    },
+    {
+      "text": "Uni/instution website",
+      "value": "Uni/instution website"
+    },
+    {
+      "text": "Website specific for project",
+      "value": "Website specific for project"
+    },
+    {
+      "text": "Zenodo",
+      "value": "Zenodo"
+    }
+  ]
+}

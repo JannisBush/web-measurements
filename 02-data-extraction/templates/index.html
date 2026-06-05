@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Meta Crawling Data Extraction App</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ url_for('static', filename='survey-core@2.0.10/survey-core.css') }}" type="text/css" rel="stylesheet">
+    
+    <script type="text/javascript" src="{{ url_for('static', filename='survey-core@2.0.10/survey.core.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='survey-core@2.0.10/survey-js-ui.js') }}"></script>
+    <!-- <script type="text/javascript" src="https://unpkg.com/survey-core/themes/index.min.js"></script> -->
+    <script type="text/javascript" src="{{ url_for('static', filename='survey-js.js') }}"></script>
+    
+    <style>
+        .navigation-header {
+            background-color: #f8f9fa;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .navigation-header h1 {
+            margin: 0 0 15px 0;
+            color: #333;
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .nav-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .nav-link:hover {
+            background-color: #0056b3;
+            color: white;
+            text-decoration: none;
+        }
+        .nav-link.secondary {
+            background-color: #6c757d;
+        }
+        .nav-link.secondary:hover {
+            background-color: #545b62;
+        }
+    </style>
+</head>
+<body>
+    <div class="navigation-header">
+        <h1>Meta Crawling Data Extraction App</h1>
+        <div class="nav-links">
+            <a href="#" class="nav-link" onclick="showSurvey(); return false;">Start Data Extraction</a>
+            <a href="/conflicts" class="nav-link secondary">Conflict Resolution</a>
+        </div>
+    </div>
+    
+    <div id="surveyContainer" style="display: none;"></div>
+    
+    <script>
+        function showSurvey() {
+            document.querySelector('.navigation-header').style.display = 'none';
+            document.getElementById('surveyContainer').style.display = 'block';
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            showSurvey();
+        });
+    </script>
+</body>
+</html>

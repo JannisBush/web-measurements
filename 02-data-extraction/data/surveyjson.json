@@ -1,0 +1,1553 @@
+{
+  "title": "Meta Web Measurement Data Extraction",
+  "completedHtml": "<h3>Thank you for completing the data entry</h3>",
+  "pages": [
+    {
+      "name": "Paper Selection",
+      "title": "Paper Selection",
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "1-q-p0-name",
+          "title": "Select data extractor name",
+          "isRequired": true,
+          "choicesByUrl": {
+            "url": "/get_options?q=1-q-p0-name",
+            "valueName": "value",
+            "titleName": "text"
+          },
+          "defaultValue": "Test",
+          "showOtherItem": true,
+          "otherPlaceholder": "New Name",
+          "otherText": "Add new"
+        },
+        {
+          "type": "radiogroup",
+          "name": "2-q-p0-papertype",
+          "title": "Select which papers are available to select",
+          "defaultValue": "own",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": "in-scope",
+              "text": "in-scope (all)"
+            },
+            {
+              "value": "sampled",
+              "text": "sampled (all)"
+            },
+            "own",
+            "progress",
+            "finished"
+          ]
+        },
+        {
+          "type": "dropdown",
+          "name": "3-q-p0-paperselect",
+          "title": "Select a paper",
+          "isRequired": true,
+          "choicesByUrl": {
+            "url": "/get_papers?type={2-q-p0-papertype}&name={1-q-p0-name}",
+            "valueName": "value",
+            "titleName": "text"
+          }
+        }
+      ]
+    },
+    {
+      "name": "page_general",
+      "title": "General Data Extraction",
+      "elements": [
+        {
+          "type": "panel",
+          "name": "p-general",
+          "title": "General",
+          "state": "expanded",
+          "elements": [
+            {
+              "type": "panel",
+              "name": "p-general-1-meta",
+              "title": "Metadata",
+              "state": "expanded",
+              "elements": [
+                {
+                  "type": "multipletext",
+                  "name": "4-q-p1-meta-1-metadata",
+                  "title": "Paper Metadata",
+                  "readOnly": true,
+                  "items": [
+                    {
+                      "name": "id"
+                    },
+                    {
+                      "name": "title"
+                    },
+                    {
+                      "name": "authors"
+                    },
+                    {
+                      "name": "conference"
+                    },
+                    {
+                      "name": "year"
+                    },
+                    {
+                      "name": "notes"
+                    },
+                    {
+                      "name": "pdf_path"
+                    }
+                  ]
+                },
+                {
+                  "type": "panel",
+                  "name": "panel1",
+                  "startWithNewLine": false,
+                  "elements": [
+                    {
+                      "type": "boolean",
+                      "name": "5-q-p1-meta-2-metadatavalidation",
+                      "startWithNewLine": false,
+                      "title": "Is the metadata correct?",
+                      "isRequired": true,
+                      "swapOrder": true
+                    },
+                    {
+                      "type": "text",
+                      "name": "6-q-p1-meta-3-metadatadetails",
+                      "visibleIf": "{5-q-p1-meta-2-metadatavalidation} = false",
+                      "title": "Explain the issue with the metadata",
+                      "isRequired": true
+                    }
+                  ]
+                },
+                {
+                  "type": "html",
+                  "name": "7-q-p1-meta-1-pdf"
+                }
+              ]
+            },
+            {
+              "type": "panel",
+              "name": "p-general-2-major",
+              "title": "Major Questions",
+              "state": "expanded",
+              "elements": [
+                {
+                  "type": "text",
+                  "name": "8-q-p1-major-1-maintopic",
+                  "title": "What is the main topic of the paper?",
+                  "isRequired": true
+                },
+                {
+                  "type": "checkbox",
+                  "name": "9-q-p1-major-2-measurementtype",
+                  "title": "What is the type of the automated measurement?",
+                  "isRequired": true,
+                  "showCommentArea": true,
+                  "commentText": "Add details",
+                  "choicesByUrl": {
+                    "url": "/get_options?q=9-q-p1-major-2-measurementtype",
+                    "valueName": "value",
+                    "titleName": "text"
+                  },
+                  "minSelectedChoices": 1
+                },
+                {
+                  "type": "panel",
+                  "name": "p-major-confirmation",
+                  "startWithNewLine": false,
+                  "elements": [
+                    {
+                      "type": "boolean",
+                      "name": "10-q-p1-major-3-noactiveconf",
+                      "visibleIf": "{9-q-p1-major-2-measurementtype} notcontains 'Active'",
+                      "startWithNewLine": false,
+                      "title": "Does the paper really not contain any active Web Measurement?",
+                      "isRequired": true,
+                      "showCommentArea": true,
+                      "commentText": "Add details",
+                      "swapOrder": true
+                    },
+                    {
+                      "type": "boolean",
+                      "name": "11-q-p1-major-4-noactiveconffinal",
+                      "visibleIf": "{10-q-p1-major-3-noactiveconf} = true",
+                      "title": "Confirm that the paper does not contain an active measurement",
+                      "description": "Now you can click complete at the page bottom to complete",
+                      "isRequired": true,
+                      "swapOrder": true
+                    }
+                  ]
+                },
+                {
+                  "type": "checkbox",
+                  "name": "12-q-p1-major-5-datasetsource",
+                  "title": "What is the source of the dataset?",
+                  "isRequired": true,
+                  "choicesByUrl": {
+                    "url": "/get_options?q=12-q-p1-major-5-datasetsource",
+                    "valueName": "value",
+                    "titleName": "text"
+                  },
+                  "minSelectedChoices": 1
+                },
+                {
+                  "type": "checkbox",
+                  "name": "13-q-p1-major-6-datasetused",
+                  "visibleIf": "{12-q-p1-major-5-datasetsource} anyof ['DB/Archive']",
+                  "startWithNewLine": false,
+                  "title": "Dataset used",
+                  "isRequired": true,
+                  "choicesByUrl": {
+                    "url": "/get_options?q=13-q-p1-major-6-datasetused",
+                    "valueName": "value",
+                    "titleName": "text"
+                  },
+                  "separateSpecialChoices": true,
+                  "showOtherItem": true,
+                  "otherPlaceholder": "NewEntry1, NewEntry2 (add multiple with comma)",
+                  "otherText": "Other (add below)",
+                  "minSelectedChoices": 1
+                },
+                {
+                  "type": "radiogroup",
+                  "name": "14-q-p1-major-7-crawlpercentage",
+                  "title": "How important is the measurement/crawl for the paper?",
+                  "isRequired": true,
+                  "showCommentArea": true,
+                  "commentText": "Add details",
+                  "choicesByUrl": {
+                    "url": "/get_options?q=14-q-p1-major-7-crawlpercentage",
+                    "valueName": "value",
+                    "titleName": "text"
+                  }
+                },
+                {
+                  "type": "radiogroup",
+                  "name": "15-q-p1-major-8-crawlpurpose",
+                  "startWithNewLine": false,
+                  "title": "What is the main purpose of the measurement/crawl?",
+                  "isRequired": true,
+                  "showCommentArea": true,
+                  "commentText": "Add details",
+                  "choicesByUrl": {
+                    "url": "/get_options?q=15-q-p1-major-8-crawlpurpose",
+                    "valueName": "value",
+                    "titleName": "text"
+                  },
+                  "showOtherItem": true,
+                  "otherPlaceholder": "NewEntry1, NewEntry2 (add multiple with comma)",
+                  "otherText": "Other (add below)"
+                },
+                {
+                  "type": "boolean",
+                  "name": "16-q-p1-major-9-multicrawl",
+                  "title": "Does the paper perform multiple crawls/measurements?",
+                  "isRequired": true,
+                  "showCommentArea": true,
+                  "commentText": "Add details",
+                  "swapOrder": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "page-setup",
+      "title": "Web Measurement Setup",
+      "elements": [
+        {
+          "type": "panel",
+          "name": "p-measurement",
+          "title": "Web Measurement Setup",
+          "state": "expanded",
+          "elements": [
+            {
+              "type": "panel",
+              "name": "p-measurement-1-dataset",
+              "title": "Dataset",
+              "state": "expanded",
+              "elements": [
+                {
+                  "type": "panel",
+                  "name": "p-dataset-1-website",
+                  "title": "Website Selection",
+                  "state": "expanded",
+                  "isRequired": true,
+                  "elements": [
+                    {
+                      "type": "checkbox",
+                      "name": "17-q-p2-dataset-website-1-list",
+                      "title": "From which list are the visited sites coming from?",
+                      "isRequired": true,
+                      "showCommentArea": true,
+                      "commentText": "Add details",
+                      "choicesByUrl": {
+                        "url": "/get_options?q=17-q-p2-dataset-website-1-list",
+                        "valueName": "value",
+                        "titleName": "text"
+                      },
+                      "showOtherItem": true,
+                      "otherPlaceholder": "NewEntry1, NewEntry2 (add multiple with comma)",
+                      "otherText": "Other (add below)"
+                    },
+                    {
+                      "type": "panel",
+                      "name": "p-website-1-subset",
+                      "title": "Subset",
+                      "startWithNewLine": false,
+                      "elements": [
+                        {
+                          "type": "text",
+                          "name": "18-q-p2-dataset-website-2-subsetsize",
+                          "title": "How many unique sites (eTLD+1) were visited?",
+                          "description": "If there are multiple measurements: take the largest and add details",
+                          "isRequired": true,
+                          "commentText": "Add details",
+                          "inputType": "number",
+                          "min": -1
+                        },
+                        {
+                          "type": "text",
+                          "name": "19-q-p2-dataset-website-2-details",
+                          "title": "Details on unique sites",
+                          "commentText": "Add details"
+                        },
+                        {
+                          "type": "checkbox",
+                          "name": "20-q-p2-dataset-website-3-subsetsampling",
+                          "title": "How was the subset sampled?",
+                          "isRequired": true,
+                          "choicesByUrl": {
+                            "url": "/get_options?q=20-q-p2-dataset-website-3-subsetsampling",
+                            "valueName": "value",
+                            "titleName": "text"
+                          },
+                          "showOtherItem": true,
+                          "otherPlaceholder": "NewEntry1, NewEntry2 (add multiple with comma)",
+                          "otherText": "Other (add below)"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "radiogroup",
+                      "name": "21-q-p2-dataset-website-4-optout",
+                      "title": "Was there an opt-out list of sites/servers? (e.g., full IP ranges ignored that do not want to contribute to the research)",
+                      "isRequired": true,
+                      "choices": [
+                        "Yes",
+                        "No",
+                        "Unclear/Not reported"
+                      ]
+                    },
+                    {
+                      "type": "radiogroup",
+                      "name": "22-q-p2-dataset-website-5-exclusion",
+                      "title": "Were there any other exclusion criteria for websites (e.g., pornographic websites)?",
+                      "description": "For invalid/not-reachable domains use the other question later down below",
+                      "isRequired": true,
+                      "showCommentArea": true,
+                      "commentText": "Add details",
+                      "choices": [
+                        "Yes",
+                        "No",
+                        "Unclear/Not reported"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "panel",
+                  "name": "p-dataset-2-webpage",
+                  "title": "Webpage Selection",
+                  "state": "expanded",
+                  "isRequired": true,
+                  "elements": [
+                    {
+                      "type": "checkbox",
+                      "name": "23-q-p2-dataset-webpage-1-starting",
+                      "title": "What was the starting page?",
+                      "description": "How are the domains from the list converted to URLs?",
+                      "isRequired": true,
+                      "showCommentArea": true,
+                      "commentText": "Add details",
+                      "choicesByUrl": {
+                        "url": "/get_options?q=23-q-p2-dataset-webpage-1-starting",
+                        "valueName": "value",
+                        "titleName": "text"
+                      },
+                      "showOtherItem": true,
+                      "otherPlaceholder": "NewEntry1, NewEntry2 (add multiple with comma)",
+                      "otherText": "Other (add below)",
+                      "minSelectedChoices": 1
+                    },
+                    {
+                      "type": "boolean",
+                      "name": "24-q-p2-dataset-webpage-2-internal",
+                      "title": "Were any additional (internal) pages visited?",
+                      "isRequired": true,
+                      "swapOrder": true
+                    },
+                    {
+                      "type": "panel",
+                      "name": "p-webpage-1-internaldetails",
+                      "startWithNewLine": false,
+                      "elements": [
+                        {
+                          "type": "checkbox",
+                          "name": "25-q-p2-dataset-webpage-3-internalselection",
+                          "visibleIf": "{24-q-p2-dataset-webpage-2-internal} = true",
+                          "title": "How were the internal pages selected?",
+                          "isRequired": true,
+                          "showCommentArea": true,
+                          "commentText": "Add details",
+                          "choicesByUrl": {
+                            "url": "/get_options?q=25-q-p2-dataset-webpage-3-internalselection",
+                            "valueName": "value",
+                            "titleName": "text"
+                          },
+                          "showOtherItem": true,
+                          "otherPlaceholder": "NewEntry1, NewEntry2 (add multiple with comma)",
+                          "otherText": "Other (add below)",
+                          "minSelectedChoices": 1
+                        },
+                        {
+                          "type": "text",
+                          "name": "26-q-p2-dataset-webpage-4-internalsize",
+                          "visibleIf": "{24-q-p2-dataset-webpage-2-internal} = true",
+                          "title": "How many internal pages per site?",
+                          "description": "Put -1 if NA (e.g., bfs several depth levels)",
+                          "isRequired": true,
+                          "commentText": "Add details",
+                          "inputType": "number",
+                          "min": -1
+                        },
+                        {
+                          "type": "text",
+                          "name": "26-27-q-p2-dataset-webpage-4-internalsize-details",
+                          "visibleIf": "{24-q-p2-dataset-webpage-2-internal} = true",
+                          "title": "Add details on internal pages/sites"
+                        },
+                        {
+                          "type": "radiogroup",
+                          "name": "28-q-p2-dataset-webpage-5-internallock",
+                          "visibleIf": "{24-q-p2-dataset-webpage-2-internal} = true",
+                          "title": "Was there a same-site lock or similar for the crawl?",
+                          "isRequired": true,
+                          "showCommentArea": true,
+                          "commentText": "Add details",
+                          "choicesByUrl": {
+                            "url": "/get_options?q=28-q-p2-dataset-webpage-5-internallock",
+                            "valueName": "value",
+                            "titleName": "text"
+                          },
+                          "showOtherItem": true,
+                          "otherPlaceholder": "NewEntry1, NewEntry2 (add multiple with comma)",
+                          "otherText": "Other (add below)"
+                        },
+                        {
+                          "type": "radiogroup",
+                          "name": "29-q-p2-dataset-webpage-6-robots",
+                          "visibleIf": "{24-q-p2-dataset-webpage-2-internal} = true",
+                          "title": "Was robots.txt adhered to?",
+                          "isRequired": true,
+                          "showCommentArea": true,
+                          "commentText": "Add details",
+                          "choicesByUrl": {
+                            "url": "/get_options?q=29-q-p2-dataset-webpage-6-robots",
+                            "valueName": "value",
+                            "titleName": "text"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "panel",
+              "name": "p-measurement-2-setup",
+              "title": "Measurement Setup and Environment",
+              "state": "expanded",
+              "elements": [
+                {
+                  "type": "panel",
+                  "name": "p-setup-1-implementation",
+                  "title": "Crawler Implementation",
+                  "state": "expanded",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "name": "30-q-p2-setup-implementation-1-name",
+                      "title": "What is the name of the crawling tech?",
+                      "isRequired": true,
+                      "placeholder": "OpenWPM, crawlee, curl, playwright-custom, puppeteer-custom, requests-custom, unclear-custom, unclear, ...."
+                    },
+                    {
+                      "type": "boolean",
+                      "name": "31-q-p2-setup-implementation-2-browserbased",
+                      "title": "Is the crawler browser-based?",
+                      "description": "If there are multiple measurements, does at least one measurement use a browser?",
+                      "isRequired": true,
+                      "swapOrder": true
+                    },
+                    {
+                      "type": "tagbox",
+                      "name": "32-q-p2-setup-implementation-3-automation",
+                      "visibleIf": "{31-q-p2-setup-implementation-2-browserbased} = true",
+                      "title": "What is the browser automation mode?",
+                      "enableIf": "{31-q-p2-setup-implementation-2-browserbased} = true",
+                      "isRequired": true,
+                      "readOnly": true,
+                      "choicesByUrl": {
+                        "url": "/get_options?q=32-q-p2-setup-implementation-3-automation",
+                        "valueName": "value",
+                        "titleName": "text"
+                      },
+                      "showOtherItem": true,
+                      "otherPlaceholder": "NewEntry1, NewEntry2 (add multiple with comma)",
+                      "otherText": "Other (add below)",
+                      "minSelectedChoices": 1
+                    },
+                    {
+                      "type": "text",
+                      "name": "33-q-p2-setup-implementation-4-automationdetails",
+                      "visibleIf": "{32-q-p2-setup-implementation-3-automation} anyof ['Custom']",
+                      "title": "Details on custom browser automation",
+                      "isRequired": true
+                    },
+                    {
+                      "type": "checkbox",
+                      "name": "34-q-p2-setup-implementation-5-browserused",
+                      "visibleIf": "{31-q-p2-setup-implementation-2-browserbased} = true",
+                      "title": "Which browser(s) was used?",
+                      "isRequired": true,
+                      "choicesByUrl": {
+                        "url": "/get_options?q=34-q-p2-setup-implementation-5-browserused",
+                        "valueName": "value",
+                        "titleName": "text"
+                      },
+                      "showOtherItem": true,
+                      "otherPlaceholder": "NewEntry1, NewEntry2 (add multiple with comma)",
+                      "otherText": "Other (add below)",
+                      "minSelectedChoices": 1
+                    },
+                    {
+                      "type": "boolean",
+                      "name": "35-q-p2-setup-implementation-6-browserversion",
+                      "visibleIf": "{31-q-p2-setup-implementation-2-browserbased} = true",
+                      "startWithNewLine": false,
+                      "title": "Were the browser versions specified?",
+                      "isRequired": true,
+                      "swapOrder": true,
+                      "showCommentArea": true,
+                      "commentText": "Add details"
+                    },
+                    {
+                      "type": "checkbox",
+                      "name": "36-q-p2-setup-implementation-6-browserinstrumentation",
+                      "visibleIf": "{31-q-p2-setup-implementation-2-browserbased} = true",
+                      "title": "What kind of browser instrumentation was used?",
+                      "showCommentArea": true,
+                      "commentText": "Add details",
+                      "isRequired": true,
+                      "choicesByUrl": {
+                        "url": "/get_options?q=36-q-p2-setup-implementation-6-browserinstrumentation",
+                        "valueName": "value",
+                        "titleName": "text"
+                      },
+                      "showOtherItem": true,
+                      "otherPlaceholder": "NewEntry1, NewEntry2 (add multiple with comma)",
+                      "otherText": "Other (add below)",
+                      "minSelectedChoices": 1
+                    },
+                    {
+                      "type": "panel",
+                      "name": "p-implementation-1-settings",
+                      "visibleIf": "{31-q-p2-setup-implementation-2-browserbased} = true",
+                      "title": "Browser Settings",
+                      "state": "expanded",
+                      "elements": [
+                        {
+                          "type": "boolean",
+                          "name": "37-q-p2-setup-implementation-7-browserext",
+                          "title": "Were there any browser extensions installed?",
+                          "description": "If not reported: default to no",
+                          "isRequired": true,
+                          "showCommentArea": true,
+                          "commentText": "Add details",
+                          "swapOrder": true
+                        },
+                        {
+                          "type": "checkbox",
+                          "name": "38-q-p2-setup-implementation-8-headless",
+                          "title": "Was the crawl headless or headfull?",
+                          "isRequired": true,
+                          "choicesByUrl": {
+                            "url": "/get_options?q=38-q-p2-setup-implementation-8-headless",
+                            "valueName": "value",
+                            "titleName": "text"
+                          },
+                          "showOtherItem": true,
+                          "otherPlaceholder": "NewEntry1, NewEntry2 (add multiple with comma)",
+                          "otherText": "Other (add below)",
+                          "minSelectedChoices": 1
+                        },
+                        {
+                          "type": "checkbox",
+                          "name": "39-q-p2-setup-implementation-9-dimensions",
+                          "title": "What window dimensions were used?",
+                          "isRequired": true,
+                          "choicesByUrl": {
+                            "url": "/get_options?q=39-q-p2-setup-implementation-9-dimensions",
+                            "valueName": "value",
+                            "titleName": "text"
+                          },
+                          "showOtherItem": true,
+                          "otherPlaceholder": "NewEntry1, NewEntry2 (add multiple with comma)",
+                          "otherText": "Other (add below)"
+                        },
+                        {
+                          "type": "radiogroup",
+                          "name": "40-q-p2-setup-implementation-10-incognito",
+                          "title": "Was incognito mode used?",
+                          "isRequired": true,
+                          "choicesByUrl": {
+                            "url": "/get_options?q=40-q-p2-setup-implementation-10-incognito",
+                            "valueName": "value",
+                            "titleName": "text"
+                          }
+                        },
+                        {
+                          "type": "comment",
+                          "name": "41-q-p2-setup-implementation-11-othersettings",
+                          "title": "Any other browser settings to report?"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "checkbox",
+                      "name": "42-q-p2-setup-implementation-12-crawlertype",
+                      "title": "Is the crawler custom-code or a finished crawler?",
+                      "description": "Custom-code (can use libraries such as playwright)\nFinished crawler: crawlee, scrapee, OpenWMP, wget, ...",
+                      "isRequired": true,
+                      "showCommentArea": true,
+                      "commentText": "Add details",
+                      "choicesByUrl": {
+                        "url": "/get_options?q=42-q-p2-setup-implementation-12-crawlertype",
+                        "valueName": "value",
+                        "titleName": "text"
+                      },
+                      "minSelectedChoices": 1
+                    },
+                    {
+                      "type": "boolean",
+                      "name": "43-q-p2-setup-implementation-13-crawleradjustments",
+                      "startWithNewLine": false,
+                      "title": "Were there any crawling tech extensions or adjustments to the crawling tech described/mentioned?",
+                      "isRequired": true,
+                      "showCommentArea": true,
+                      "commentText": "Add details",
+                      "swapOrder": true
+                    },
+                    {
+                      "type": "boolean",
+                      "name": "44-q-p2-setup-implementation-14-headercustom",
+                      "title": "Was any header customization reported?",
+                      "description": "e.g., user-agent spoofing",
+                      "isRequired": true,
+                      "showCommentArea": true,
+                      "commentText": "Add details",
+                      "swapOrder": true
+                    },
+                    {
+                      "type": "boolean",
+                      "name": "45-q-p2-setup-implementation-15-botevasion",
+                      "startWithNewLine": false,
+                      "title": "Was any bot evasion reported? (static, e.g., stealth plugin, real user-agents)",
+                      "isRequired": true,
+                      "showCommentArea": true,
+                      "commentText": "Add details",
+                      "swapOrder": true
+                    },
+                    {
+                      "type": "boolean",
+                      "name": "46-q-p2-setup-implementation-16-selfident",
+                      "startWithNewLine": false,
+                      "title": "Was any self-identification reported?",
+                      "description": "e.g., from header or reverse-DNS",
+                      "isRequired": true,
+                      "showCommentArea": true,
+                      "commentText": "Add details",
+                      "swapOrder": true
+                    }
+                  ]
+                },
+                {
+                  "type": "panel",
+                  "name": "p-setup-2-environment",
+                  "title": "Crawling Environment",
+                  "state": "expanded",
+                  "elements": [
+                    {
+                      "type": "checkbox",
+                      "name": "47-q-p2-setup-env-1-platform",
+                      "title": "Which platforms were used?",
+                      "isRequired": true,
+                      "showCommentArea": true,
+                      "commentText": "Add details",
+                      "choicesByUrl": {
+                        "url": "/get_options?q=47-q-p2-setup-env-1-platform",
+                        "valueName": "value",
+                        "titleName": "text"
+                      },
+                      "showOtherItem": true,
+                      "otherPlaceholder": "NewEntry1, NewEntry2 (add multiple with comma)",
+                      "otherText": "Other (add below)",
+                      "minSelectedChoices": 1
+                    },
+                    {
+                      "type": "checkbox",
+                      "name": "48-q-p2-setup-env-2-ip",
+                      "title": "Which type of IP was used?",
+                      "isRequired": true,
+                      "showCommentArea": true,
+                      "commentText": "Add details",
+                      "choicesByUrl": {
+                        "url": "/get_options?q=48-q-p2-setup-env-2-ip",
+                        "valueName": "value",
+                        "titleName": "text"
+                      }
+                    },
+                    {
+                      "type": "radiogroup",
+                      "name": "49-q-p2-setup-env-3-iprot",
+                      "startWithNewLine": false,
+                      "title": "Were multiple IPs used?",
+                      "isRequired": true,
+                      "showCommentArea": true,
+                      "commentText": "Add details",
+                      "choicesByUrl": {
+                        "url": "/get_options?q=49-q-p2-setup-env-3-iprot",
+                        "valueName": "value",
+                        "titleName": "text"
+                      }
+                    },
+                    {
+                      "type": "checkbox",
+                      "name": "50-q-p2-setup-env-4-geo",
+                      "title": "What geolocation was used?",
+                      "isRequired": true,
+                      "showCommentArea": true,
+                      "commentText": "Add details",
+                      "choicesByUrl": {
+                        "url": "/get_options?q=50-q-p2-setup-env-4-geo",
+                        "valueName": "value",
+                        "titleName": "text"
+                      },
+                      "showOtherItem": true,
+                      "otherPlaceholder": "NewEntry1, NewEntry2 (add multiple with comma)",
+                      "otherText": "Other (add below)"
+                    },
+                    {
+                      "type": "boolean",
+                      "name": "51-q-p2-setup-env-5-time",
+                      "title": "Was the time (period) of the crawl mentioned? (at least year)",
+                      "isRequired": true,
+                      "showCommentArea": true,
+                      "commentText": "Add details",
+                      "commentPlaceholder": "E.g., from Date to Date (copy text from paper)",
+                      "swapOrder": true
+                    }
+                  ]
+                },
+                {
+                  "type": "panel",
+                  "name": "p-setup-3-process",
+                  "title": "Crawling Setup + Process",
+                  "state": "expanded",
+                  "elements": [
+                    {
+                      "type": "panel",
+                      "name": "p-setup-1-setup",
+                      "title": "Setup (before visiting one URL of interest)",
+                      "state": "expanded",
+                      "elements": [
+                        {
+                          "type": "checkbox",
+                          "name": "52-q-p2-setup-1-state",
+                          "title": "Is state accumulated or deleted/fresh profile?",
+                          "minSelectedChoices": 1,
+                          "isRequired": true,
+                          "showCommentArea": true,
+                          "commentText": "Add details",
+                          "choicesByUrl": {
+                            "url": "/get_options?q=52-q-p2-setup-1-state",
+                            "valueName": "value",
+                            "titleName": "text"
+                          }
+                        },
+                        {
+                          "type": "radiogroup",
+                          "name": "53-q-p2-setup-2-statedeletion",
+                          "visibleIf": "{52-q-p2-setup-1-state} = 'Deleted/fresh profile'",
+                          "startWithNewLine": false,
+                          "title": "How often is the state deleted?",
+                          "isRequired": true,
+                          "choicesByUrl": {
+                            "url": "/get_options?q=53-q-p2-setup-2-statedeletion",
+                            "valueName": "value",
+                            "titleName": "text"
+                          },
+                          "showOtherItem": true,
+                          "otherPlaceholder": "NewEntry1, NewEntry2 (add multiple with comma)",
+                          "otherText": "Other (add below)"
+                        },
+                        {
+                          "type": "radiogroup",
+                          "name": "54-q-p2-setup-3-auth",
+                          "title": "Is authentication performed?",
+                          "isRequired": true,
+                          "showCommentArea": true,
+                          "commentText": "Add details",
+                          "choicesByUrl": {
+                            "url": "/get_options?q=54-q-p2-setup-3-auth",
+                            "valueName": "value",
+                            "titleName": "text"
+                          },
+                          "showOtherItem": true,
+                          "otherPlaceholder": "NewEntry1, NewEntry2 (add multiple with comma)",
+                          "otherText": "Other (add below)"
+                        },
+                        {
+                          "type": "checkbox",
+                          "name": "55-q-p2-setup-4-addactions",
+                          "title": "Is any other non-trivial setup done?",
+                          "description": "Interactive for each website (static browser setup is answered in other questions)",
+                          "isRequired": true,
+                          "showCommentArea": true,
+                          "commentText": "Add details",
+                          "choicesByUrl": {
+                            "url": "/get_options?q=55-q-p2-setup-4-addactions",
+                            "valueName": "value",
+                            "titleName": "text"
+                          },
+                          "showOtherItem": true,
+                          "otherPlaceholder": "NewEntry1, NewEntry2 (add multiple with comma)",
+                          "otherText": "Other (add below)",
+                          "minSelectedChoices": 1
+                        }
+                      ]
+                    },
+                    {
+                      "type": "panel",
+                      "name": "p-setup-2-process",
+                      "title": "Process (during the visit of one URL of interest)",
+                      "state": "expanded",
+                      "elements": [
+                        {
+                          "type": "boolean",
+                          "name": "56-q-p2-process-1-bot",
+                          "title": "Is something dynamic reported for bot evasion?",
+                          "description": "e.g., filling captchas, realistic mouse movements",
+                          "isRequired": true,
+                          "showCommentArea": true,
+                          "commentText": "Add details",
+                          "swapOrder": true
+                        },
+                        {
+                          "type": "boolean",
+                          "name": "57-q-p2-process-2-crawlspecific",
+                          "title": "Is the crawling/measurement generic for all sites or does it differ according to the site?",
+                          "isRequired": true,
+                          "showCommentArea": true,
+                          "commentText": "Add details",
+                          "swapOrder": true,
+                          "labelTrue": "Generic",
+                          "labelFalse": "Site-specific"
+                        },
+                        {
+                          "type": "checkbox",
+                          "name": "58-q-p2-process-3-pageload",
+                          "title": "What is the page load timeout?",
+                          "isRequired": true,
+                          "showCommentArea": true,
+                          "commentText": "Add details",
+                          "commentPlaceholder": "e.g., which page load event? (load, domcontentload, networkidle, ...)",
+                          "choicesByUrl": {
+                            "url": "/get_options?q=58-q-p2-process-3-pageload",
+                            "valueName": "value",
+                            "titleName": "text"
+                          },
+                          "showOtherItem": true,
+                          "otherPlaceholder": "NewEntry1, NewEntry2 (add multiple with comma)",
+                          "otherText": "Other (add below)"
+                        },
+                        {
+                          "type": "text",
+                          "name": "58-59-q-p2-process-3-pageload-seconds",
+                          "visibleIf": "{58-q-p2-process-3-pageload} contains 'Specified'",
+                          "startWithNewLine": false,
+                          "title": "Specify page load timeout (in seconds)",
+                          "isRequired": true,
+                          "inputType": "number",
+                          "min": 0
+                        },
+                        {
+                          "type": "checkbox",
+                          "name": "60-q-p2-process-4-pagestay",
+                          "title": "How long does the crawler stay on the page after the page loaded?",
+                          "isRequired": true,
+                          "showCommentArea": true,
+                          "commentText": "Add details",
+                          "choicesByUrl": {
+                            "url": "/get_options?q=60-q-p2-process-4-pagestay",
+                            "valueName": "value",
+                            "titleName": "text"
+                          },
+                          "showOtherItem": true,
+                          "otherPlaceholder": "NewEntry1, NewEntry2 (add multiple with comma)",
+                          "otherText": "Other (add below)"
+                        },
+                        {
+                          "type": "text",
+                          "name": "60-61-q-p2-process-4-pagestay-seconds",
+                          "visibleIf": "{60-q-p2-process-4-pagestay} contains 'Specified'",
+                          "startWithNewLine": false,
+                          "title": "Specify page stay duration (in seconds)",
+                          "isRequired": true,
+                          "inputType": "number",
+                          "min": 0
+                        },
+                        {
+                          "type": "boolean",
+                          "name": "62-q-p2-process-5-pageinteraction",
+                          "visibleIf": "{31-q-p2-setup-implementation-2-browserbased} = true",
+                          "title": "Is there any webpage interaction mentioned?",
+                          "isRequired": true,
+                          "showCommentArea": true,
+                          "commentText": "Add details",
+                          "commentPlaceholder": "E.g., explicit mention of no interaction",
+                          "swapOrder": true
+                        },
+                        {
+                          "type": "checkbox",
+                          "name": "63-q-p2-process-6-pageinteractiondetails",
+                          "visibleIf": "{62-q-p2-process-5-pageinteraction} = true",
+                          "startWithNewLine": false,
+                          "title": "What interaction is performed?",
+                          "isRequired": true,
+                          "showCommentArea": true,
+                          "commentText": "Add details",
+                          "choicesByUrl": {
+                            "url": "/get_options?q=63-q-p2-process-6-pageinteractiondetails",
+                            "valueName": "value",
+                            "titleName": "text"
+                          },
+                          "showOtherItem": true,
+                          "otherPlaceholder": "NewEntry1, NewEntry2 (add multiple with comma)",
+                          "otherText": "Other (add below)"
+                        },
+                        {
+                          "type": "checkbox",
+                          "name": "64-q-p2-process-7-datacollected",
+                          "title": "What is measured/what data is collected?",
+                          "isRequired": true,
+                          "choicesByUrl": {
+                            "url": "/get_options?q=64-q-p2-process-7-datacollected",
+                            "valueName": "value",
+                            "titleName": "text"
+                          },
+                          "showOtherItem": true,
+                          "otherPlaceholder": "NewEntry1, NewEntry2 (add multiple with comma)",
+                          "otherText": "Other (add below)",
+                          "showCommentArea": true,
+                          "commentText": "Add details"
+                        },
+                        {
+                          "type": "checkbox",
+                          "name": "65-q-p2-process-8-parallel",
+                          "title": "How many parallel crawlers?",
+                          "isRequired": true,
+                          "showCommentArea": true,
+                          "commentText": "Add details",
+                          "choicesByUrl": {
+                            "url": "/get_options?q=65-q-p2-process-8-parallel",
+                            "valueName": "value",
+                            "titleName": "text"
+                          },
+                          "showOtherItem": true,
+                          "otherPlaceholder": "NewEntry1, NewEntry2 (add multiple with comma)",
+                          "otherText": "Other (add below)",
+                          "minSelectedChoices": 1
+                        },
+                        {
+                          "type": "text",
+                          "name": "65-66-q-p2-process-8-parallel-2",
+                          "visibleIf": "{65-q-p2-process-8-parallel} contains 'Parallel'",
+                          "title": "Enter the number of parallel crawlers",
+                          "isRequired": true,
+                          "commentText": "Add details",
+                          "inputType": "number",
+                          "min": 2
+                        },
+                        {
+                          "type": "text",
+                          "name": "67-q-p2-process-9-reqssecond",
+                          "title": "How many requests are performed per second/site?",
+                          "isRequired": true
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "name": "68-q-p2-crawlduration-1-duration",
+                      "title": "What was the crawl duration?",
+                      "isRequired": true,
+                      "placeholder": "use \"unclear/not reported\" if not reported"
+                    },
+                    {
+                      "type": "text",
+                      "name": "69-q-p2-crawlmultiple-1-multiple",
+                      "title": "How often was the (crawl)/measurement performed?",
+                      "isRequired": true,
+                      "inputType": "number",
+                      "min": -1
+                    },
+                    {
+                      "type": "checkbox",
+                      "name": "70-q-p2-crawlmultiple-2-multipledetails",
+                      "requiredIf": "{69-q-p2-crawlmultiple-1-multiple} > 1",
+                      "startWithNewLine": false,
+                      "title": "What was the purpose of the multiple crawls?",
+                      "description": "Only required if >1",
+                      "showCommentArea": true,
+                      "commentText": "Add details",
+                      "choicesByUrl": {
+                        "url": "/get_options?q=70-q-p2-crawlmultiple-2-multipledetails",
+                        "valueName": "value",
+                        "titleName": "text"
+                      },
+                      "showOtherItem": true,
+                      "otherPlaceholder": "NewEntry1, NewEntry2 (add multiple with comma)",
+                      "otherText": "Other (add below)"                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "panel",
+              "name": "p-measurement-3-analysisreporting",
+              "title": "Analysis & Reporting",
+              "state": "expanded",
+              "elements": [
+                {
+                  "type": "checkbox",
+                  "name": "71-q-p2-analysis-1-exclusion",
+                  "title": "Are any URLs excluded? (after crawling, during analysis)",
+                  "description": "Not full sources of URLs reduced/changed, but filtering of URLs after retreiving all from the source",
+                  "isRequired": true,
+                  "showCommentArea": true,
+                  "commentText": "Add details (e.g., definition of duplicated pages)",
+                  "choicesByUrl": {
+                    "url": "/get_options?q=71-q-p2-analysis-1-exclusion",
+                    "valueName": "value",
+                    "titleName": "text"
+                  },
+                  "showOtherItem": true,
+                  "otherPlaceholder": "NewEntry1, NewEntry2 (add multiple with comma)",
+                  "otherText": "Other (add below)",
+                  "minSelectedChoices": 1
+                },
+                {
+                  "type": "checkbox",
+                  "name": "72-q-p2-analysis-2-presentation",
+                  "title": "How are results presented/aggregated?",
+                  "isRequired": true,
+                  "showCommentArea": true,
+                  "commentText": "Add details",
+                  "choicesByUrl": {
+                    "url": "/get_options?q=72-q-p2-analysis-2-presentation",
+                    "valueName": "value",
+                    "titleName": "text"
+                  },
+                  "showOtherItem": true,
+                  "otherPlaceholder": "NewEntry1, NewEntry2 (add multiple with comma)",
+                  "otherText": "Other (add below)",
+                  "minSelectedChoices": 1
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "page-issues",
+      "title": "Web Measurement Issues & Problems",
+      "elements": [
+        {
+          "type": "panel",
+          "name": "p2-1-problems",
+          "title": "Web Measurement Issues & Problems",
+          "state": "expanded",
+          "elements": [
+            {
+              "type": "radiogroup",
+              "name": "73-q-p3-problems-1-genreport",
+              "title": "What does the paper say about generalization/representativeness?",
+              "isRequired": true,
+              "choicesByUrl": {
+                "url": "/get_options?q=73-q-p3-problems-1-genreport",
+                "valueName": "value",
+                "titleName": "text"
+              }
+            },
+            {
+              "type": "panel",
+              "name": "p2-1-problems-generalize",
+              "startWithNewLine": false,
+              "elements": [
+                {
+                  "type": "text",
+                  "name": "74-q-p3-problems-2-genown",
+                  "title": "What do you think about the representativeness/generalization of the paper?",
+                  "isRequired": true
+                },
+                {
+                  "type": "comment",
+                  "name": "75-q-p3-problems-3-gendetails",
+                  "visibleIf": "{73-q-p3-problems-1-genreport} <> 'Nothing' and {73-q-p3-problems-1-genreport} notempty",
+                  "title": "Details about what the paper says about generalization/representativeness",
+                  "isRequired": true
+                }
+              ]
+            },
+            {
+              "type": "panel",
+              "name": "p2-2-factors",
+              "title": "Factors",
+              "state": "expanded",
+              "elements": [
+                {
+                  "type": "boolean",
+                  "name": "76-q-p3-factors-1-factors",
+                  "title": "Does the paper mention that results could depend on the measurement setup/process?",
+                  "isRequired": true,
+                  "swapOrder": true
+                },
+                {
+                  "type": "checkbox",
+                  "name": "77-q-p3-factors-2-factorsloc",
+                  "visibleIf": "{76-q-p3-factors-1-factors} = true",
+                  "title": "Where is this mentioned?",
+                  "showCommentArea": true,
+                  "commentText": "Add details",
+                  "isRequired": true,
+                  "choicesByUrl": {
+                    "url": "/get_options?q=77-q-p3-factors-2-factorsloc",
+                    "valueName": "value",
+                    "titleName": "text"
+                  }
+                },
+                {
+                  "type": "checkbox",
+                  "name": "78-q-p3-factors-3-factorscat",
+                  "visibleIf": "{76-q-p3-factors-1-factors} = true",
+                  "title": "Which factor categories are mentioned?",
+                  "showCommentArea": true,
+                  "commentText": "Add details",
+                  "isRequired": true,
+                  "choicesByUrl": {
+                    "url": "/get_options?q=78-q-p3-factors-3-factorscat",
+                    "valueName": "value",
+                    "titleName": "text"
+                  },
+                  "otherPlaceholder": "Did we really miss a top-level category?",
+                  "otherText": "Other (add)",
+                  "minSelectedChoices": 1
+                },
+                {
+                  "type": "panel",
+                  "name": "panel-factor-details",
+                  "startWithNewLine": false,
+                  "elements": [
+                    {
+                      "type": "checkbox",
+                      "name": "79-q-p3-factors-4-dataset",
+                      "visibleIf": "{78-q-p3-factors-3-factorscat} anyof ['Dataset']",
+                      "title": "Which dataset factors are mentioned?",
+                      "isRequired": true,
+                      "showCommentArea": true,
+                      "commentText": "Add details",
+                      "choicesByUrl": {
+                        "url": "/get_options?q=79-q-p3-factors-4-dataset",
+                        "valueName": "value",
+                        "titleName": "text"
+                      },
+                      "showOtherItem": true,
+                      "otherPlaceholder": "NewEntry1, NewEntry2 (add multiple with comma)",
+                      "otherText": "Other (add below)",
+                      "minSelectedChoices": 1
+                    },
+                    {
+                      "type": "checkbox",
+                      "name": "80-q-p3-factors-5-implementation",
+                      "visibleIf": "{78-q-p3-factors-3-factorscat} anyof ['Crawler Implementation']",
+                      "title": "Which crawler implementation factors are mentioned?",
+                      "isRequired": true,
+                      "showCommentArea": true,
+                      "commentText": "Add details",
+                      "choicesByUrl": {
+                        "url": "/get_options?q=80-q-p3-factors-5-implementation",
+                        "valueName": "value",
+                        "titleName": "text"
+                      },
+                      "showOtherItem": true,
+                      "otherPlaceholder": "NewEntry1, NewEntry2 (add multiple with comma)",
+                      "otherText": "Other (add below)",
+                      "minSelectedChoices": 1
+                    },
+                    {
+                      "type": "checkbox",
+                      "name": "81-q-p3-factors-6-env",
+                      "visibleIf": "{78-q-p3-factors-3-factorscat} anyof ['Crawling Environment']",
+                      "title": "Which crawler environment factors are mentioned?",
+                      "isRequired": true,
+                      "showCommentArea": true,
+                      "commentText": "Add details",
+                      "choicesByUrl": {
+                        "url": "/get_options?q=81-q-p3-factors-6-env",
+                        "valueName": "value",
+                        "titleName": "text"
+                      },
+                      "showOtherItem": true,
+                      "otherPlaceholder": "NewEntry1, NewEntry2 (add multiple with comma)",
+                      "otherText": "Other (add below)",
+                      "minSelectedChoices": 1
+                    },
+                    {
+                      "type": "checkbox",
+                      "name": "82-q-p3-factors-7-process",
+                      "visibleIf": "{78-q-p3-factors-3-factorscat} anyof ['Crawling Setup']",
+                      "title": "Which crawling process/setup factors are mentioned?",
+                      "isRequired": true,
+                      "showCommentArea": true,
+                      "commentText": "Add details",
+                      "choicesByUrl": {
+                        "url": "/get_options?q=82-q-p3-factors-7-process",
+                        "valueName": "value",
+                        "titleName": "text"
+                      },
+                      "showOtherItem": true,
+                      "otherPlaceholder": "NewEntry1, NewEntry2 (add multiple with comma)",
+                      "otherText": "Other (add below)",
+                      "minSelectedChoices": 1
+                    },
+                    {
+                      "type": "checkbox",
+                      "name": "83-q-p3-factors-8-reporting",
+                      "visibleIf": "{78-q-p3-factors-3-factorscat} anyof ['Analysis & Reporting']",
+                      "title": "Which analysis/reporting factors are mentioned?",
+                      "isRequired": true,
+                      "showCommentArea": true,
+                      "commentText": "Add details",
+                      "choicesByUrl": {
+                        "url": "/get_options?q=83-q-p3-factors-8-reporting",
+                        "valueName": "value",
+                        "titleName": "text"
+                      },
+                      "showOtherItem": true,
+                      "otherPlaceholder": "NewEntry1, NewEntry2 (add multiple with comma)",
+                      "otherText": "Other (add below)",
+                      "minSelectedChoices": 1
+                    },
+                    {
+                      "type": "checkbox",
+                      "name": "84-q-p3-factors-9-other",
+                      "visibleIf": "{78-q-p3-factors-3-factorscat} anyof ['Other/Ungrouped']",
+                      "title": "Which other/ungrouped factors are mentioned?",
+                      "isRequired": true,
+                      "showCommentArea": true,
+                      "commentText": "Add details",
+                      "choicesByUrl": {
+                        "url": "/get_options?q=84-q-p3-factors-9-other",
+                        "valueName": "value",
+                        "titleName": "text"
+                      },
+                      "showOtherItem": true,
+                      "otherPlaceholder": "NewEntry1, NewEntry2 (add multiple with comma)",
+                      "otherText": "Other (add below)",
+                      "minSelectedChoices": 1
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "panel",
+              "name": "p3-3-factortesting",
+              "title": "Factor Testing",
+              "state": "expanded",
+              "elements": [
+                {
+                  "type": "boolean",
+                  "name": "85-q-p3-factortesting-1-testing",
+                  "title": "Does the paper test for the impact/influence of any factor (for the measurement)?",
+                  "isRequired": true,
+                  "swapOrder": true
+                },
+                {
+                  "type": "checkbox",
+                  "name": "86-q-p3-factortesting-2-which",
+                  "visibleIf": "{85-q-p3-factortesting-1-testing} = true",
+                  "title": "Which factors are tested?",
+                  "showCommentArea": true,
+                  "commentText": "Add details",
+                  "isRequired": true,
+                  "choicesByUrl": {
+                    "url": "/get_options?q=86-q-p3-factortesting-2-which",
+                    "valueName": "value",
+                    "titleName": "text"
+                  },
+                  "showOtherItem": true,
+                  "otherPlaceholder": "NewEntry1, NewEntry2 (add multiple with comma)",
+                  "otherText": "Other (add below)"
+                },
+                {
+                  "type": "boolean",
+                  "name": "87-q-p3-factortesting-3-core",
+                  "visibleIf": "{85-q-p3-factortesting-1-testing} = true",
+                  "title": "Is the testing of the factor a core contribution of the paper?",
+                  "isRequired": true,
+                  "showCommentArea": true,
+                  "commentText": "Add details",
+                  "swapOrder": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Page practices",
+      "title": "Web Measurement Good Scientific Practices",
+      "elements": [
+        {
+          "type": "panel",
+          "name": "p4-pratices",
+          "title": "Web Measurements Good Scientific Practices",
+          "state": "expanded",
+          "elements": [
+            {
+              "type": "boolean",
+              "name": "88-q-p4-practices-1-limitations",
+              "title": "Does the paper explicitly mention limitations? (of the paper itself, does not have to be crawl related)",
+              "isRequired": true,
+              "swapOrder": true
+            },
+            {
+              "type": "panel",
+              "name": "p4-limitations",
+              "startWithNewLine": false,
+              "elements": [
+                {
+                  "type": "checkbox",
+                  "name": "89-q-p4-practices-2-limitationsloc",
+                  "visibleIf": "{88-q-p4-practices-1-limitations} = true",
+                  "startWithNewLine": false,
+                  "title": "Where are limitations mentioned?",
+                  "isRequired": true,
+                  "choicesByUrl": {
+                    "url": "/get_options?q=89-q-p4-practices-2-limitationsloc",
+                    "valueName": "value",
+                    "titleName": "text"
+                  },
+                  "showOtherItem": true,
+                  "otherPlaceholder": "NewEntry1, NewEntry2 (add multiple with comma)",
+                  "otherText": "Other (add below)",
+                  "minSelectedChoices": 1
+                },
+                {
+                  "type": "comment",
+                  "name": "90-q-p4-practices-3-limitationsdetails",
+                  "visibleIf": "{88-q-p4-practices-1-limitations} = true",
+                  "title": "Details of the limitations",
+                  "isRequired": true
+                }
+              ]
+            },
+            {
+              "type": "boolean",
+              "name": "91-q-p4-practices-4-ethics",
+              "title": "Does the paper explicitly mention ethics somewhere in the text? (or a subset such as responsible disclosure)",
+              "isRequired": true,
+              "swapOrder": true
+            },
+            {
+              "type": "panel",
+              "name": "p4-ethics",
+              "startWithNewLine": false,
+              "elements": [
+                {
+                  "type": "checkbox",
+                  "name": "92-q-p4-practices-5-ethicsloc",
+                  "visibleIf": "{91-q-p4-practices-4-ethics} = true",
+                  "startWithNewLine": false,
+                  "title": "Where are ethics mentioned? (named paragraph ~ section)",
+                  "isRequired": true,
+                  "choicesByUrl": {
+                    "url": "/get_options?q=92-q-p4-practices-5-ethicsloc",
+                    "valueName": "value",
+                    "titleName": "text"
+                  },
+                  "showOtherItem": true,
+                  "otherPlaceholder": "NewEntry1, NewEntry2 (add multiple with comma)",
+                  "otherText": "Other (add below)"
+                },
+                {
+                  "type": "comment",
+                  "name": "93-q-p4-practices-6-ethicsdetails",
+                  "visibleIf": "{91-q-p4-practices-4-ethics} = true",
+                  "title": "Details about ethics",
+                  "isRequired": true
+                }
+              ]
+            },
+            {
+              "type": "checkbox",
+              "name": "94-q-p4-practices-6-5-avail",
+              "title": "Is there an availability 'section'/paragraph or similar?",
+              "isRequired": true,
+              "showCommentArea": true,
+              "commentText": "Add details",
+              "commentPlaceholder": "Copy text of that section",
+              "choicesByUrl": {
+                "url": "/get_options?q=94-q-p4-practices-6-5-avail"
+              },
+              "showOtherItem": true,
+              "otherPlaceholder": "NewEntry1, NewEntry2 (add multiple with comma)",
+              "otherText": "Other (add below)"
+            },
+            {
+              "type": "radiogroup",
+              "name": "95-q-p4-practices-7-code",
+              "title": "Is the code (for the web measurement/crawl) available?",
+              "isRequired": true,
+              "showCommentArea": true,
+              "commentText": "Add details (e.g., explain partially)",
+              "choicesByUrl": {
+                "url": "/get_options?q=95-q-p4-practices-7-code",
+                "valueName": "value",
+                "titleName": "text"
+              }
+            },
+            {
+              "type": "radiogroup",
+              "name": "96-q-p4-practices-8-data",
+              "startWithNewLine": false,
+              "title": "Is the data (for the web measurement/crawl) available?",
+              "isRequired": true,
+              "showCommentArea": true,
+              "commentText": "Add details (e.g., explain partially)",
+              "choicesByUrl": {
+                "url": "/get_options?q=96-q-p4-practices-8-data",
+                "valueName": "value",
+                "titleName": "text"
+              }
+            },
+            {
+              "type": "checkbox",
+              "name": "97-q-p4-practices-9-codewhere",
+              "visibleIf": "{95-q-p4-practices-7-code} anyof ['Yes', 'Partially', 'Dead link', 'Empty repo']",
+              "title": "Where is the code hosted?",
+              "isRequired": true,
+              "showCommentArea": true,
+              "commentText": "Add details",
+              "choicesByUrl": {
+                "url": "/get_options?q=97-q-p4-practices-9-codewhere",
+                "valueName": "value",
+                "titleName": "text"
+              },
+              "showOtherItem": true,
+              "otherPlaceholder": "NewEntry1, NewEntry2 (add multiple with comma)",
+              "otherText": "Other (add below)",
+              "minSelectedChoices": 1
+            },
+            {
+              "type": "checkbox",
+              "name": "98-q-p4-practices-10-datawhere",
+              "visibleIf": "{96-q-p4-practices-8-data} anyof ['Yes', 'Partially', 'Dead link', 'Empty repo']",
+              "startWithNewLine": false,
+              "title": "Where is the data hosted?",
+              "isRequired": true,
+              "showCommentArea": true,
+              "commentText": "Add details",
+              "choicesByUrl": {
+                "url": "/get_options?q=98-q-p4-practices-10-datawhere",
+                "valueName": "value",
+                "titleName": "text"
+              },
+              "showOtherItem": true,
+              "otherPlaceholder": "NewEntry1, NewEntry2 (add multiple with comma)",
+              "otherText": "Other (add below)",
+              "minSelectedChoices": 1
+            },
+            {
+              "type": "checkbox",
+              "name": "99-q-p4-practices-11-artifact-eval",
+              "title": "Are the artifacts of the paper evaluated?",
+              "isRequired": true,
+              "showCommentArea": true,
+              "commentText": "Add details",
+              "choices": [
+                "No",
+                "Available",
+                "Functional",
+                "Reusable",
+                "Reproduced",
+                "General/Unspecified",
+                "Unclear"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "page-notes",
+      "title": "Notes",
+      "elements": [
+        {
+          "type": "panel",
+          "name": "p5-notes",
+          "title": "Confirm Notes",
+          "elements": [
+            {
+              "type": "comment",
+              "name": "100-q-p5-notes-final",
+              "title": "Final Notes (Optional)",
+              "placeholder": "Add some final notes"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "triggers": [
+    {
+      "type": "complete",
+      "expression": "{11-q-p1-major-4-noactiveconffinal} = true"
+    }
+  ],
+  "partialSendEnabled": true,
+  "showTOC": true,
+  "storeOthersAsComment": false,
+  "checkErrorsMode": "onComplete",
+  "showPreviewBeforeComplete": true
+}

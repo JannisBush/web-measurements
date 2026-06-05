@@ -13,3 +13,22 @@ This repository contains the supplementary material for the Paper "SoK: Hidden V
 - [sampling.py](01-paper-selection/sampling.py) code that was used to sample the 70+2 papers for detailed data extraction. Execute with `poetry run python 01-paper-selection/sampling.py` to verify that the same papers are sampled that are sampled in `paper_selection.csv`
 
 ## 02-data-extraction
+- [app.py](02-data-extraction/app.py) Main app for both data extraction and conflict resolution
+    - To try it out `cd 02-data-extraction && poetry run python app.py` and then visit http://127.0.0.1:5001/
+    - Select a data extractor name (CoderA) and select a paper, then click through the pages to see the various questions in the interactive form.
+    - We filled the app with dummy responses for two papers such that the progress/finished loading feature and the conflict resolution app can be tested easier.
+    - To test the conflict resolution app, visit http://127.0.0.1:5001/conflicts
+    - First click on "Initial resolution" to check the initial resolution step. Then return to the `/conflicts` page and click on "Final resolution" to try out the final resolution step.
+- [conflict_analyzer.py](02-data-extraction/conflict_analyzer.py) Helper script to analyze the conflicts between two coders
+- [initial_resolution_manager.py](02-data-extraction/initial_resolution_manager.py) Backendlogic for the inital resolution step
+- [question_loader.py](02-data-extraction/question_loader.py) Helper script
+- [response_manager.py](02-data-extraction/response_manager.py) Helper script
+- [templates](02-data-extraction/templates/): HTML templates for the data extraction and conflict app
+- [static](02-data-extraction/static/): Static assets of the data extraction and conflict app
+- [data](02-data-extraction/data/)
+    - [surveyjson.json](02-data-extraction/data/surveyjson.json) The questionnaire used for the study
+    - [custom-options.json](02-data-extraction/data/custom-options.json) Custom Options for multiple-choice questions of the questionnaire
+    - [final_responses.json](02-data-extraction/data/final_responses.json) Dummy final data to showcase the functionality of the data extraction app
+    - [initial_resolutions](02-data-extraction/data/initial_resolutions/) Dummy data to showcase the initial_resolution step
+    - [progress](02-data-extraction/data/progress/) Dummy data to showcase the progress saving
+    - [responses](02-data-extraction/data/responses/) Dummy data to showcase the response saving

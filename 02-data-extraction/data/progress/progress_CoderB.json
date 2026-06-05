@@ -1,0 +1,125 @@
+{
+  "3731": {
+    "1-q-p0-name": "CoderB",
+    "2-q-p0-papertype": "own",
+    "3-q-p0-paperselect": 3731,
+    "4-q-p1-meta-1-metadata": {
+      "authors": "Brian Kondracki Babak Amin Azad Oleksii Starov Nick Nikiforakis",
+      "conference": "ccs",
+      "id": "3731",
+      "notes": "",
+      "pdf_path": "ccs-2021-3731.pdf",
+      "title": "Catching Transparent Phish: Analyzing and Detecting MITM Phishing Toolkits",
+      "year": 2021
+    },
+    "5-q-p1-meta-2-metadatavalidation": true,
+    "8-q-p1-major-1-maintopic": "Dummy",
+    "9-q-p1-major-2-measurementtype": [
+      "Active"
+    ],
+    "12-q-p1-major-5-datasetsource": [
+      "Live Crawl"
+    ],
+    "14-q-p1-major-7-crawlpercentage": "only",
+    "15-q-p1-major-8-crawlpurpose": "Evaluating proposed tool/defense/attack/classifier",
+    "16-q-p1-major-9-multicrawl": false,
+    "17-q-p2-dataset-website-1-list": [
+      "\"User\" Content URLs (e.g., Reddit, Wikipedia)",
+      "AOL Query Log"
+    ],
+    "18-q-p2-dataset-website-2-subsetsize": 500,
+    "19-q-p2-dataset-website-2-details": "Details",
+    "20-q-p2-dataset-website-3-subsetsampling": [
+      "Top N"
+    ],
+    "21-q-p2-dataset-website-4-optout": "No",
+    "22-q-p2-dataset-website-5-exclusion": "No",
+    "23-q-p2-dataset-webpage-1-starting": [
+      "Domain to Landing Page conversion specified"
+    ],
+    "24-q-p2-dataset-webpage-2-internal": false,
+    "30-q-p2-setup-implementation-1-name": "OpenWPM",
+    "31-q-p2-setup-implementation-2-browserbased": false,
+    "42-q-p2-setup-implementation-12-crawlertype": [
+      "Finished Crawler"
+    ],
+    "43-q-p2-setup-implementation-13-crawleradjustments": false,
+    "44-q-p2-setup-implementation-14-headercustom": false,
+    "45-q-p2-setup-implementation-15-botevasion": false,
+    "46-q-p2-setup-implementation-16-selfident": false,
+    "47-q-p2-setup-env-1-platform": [
+      "Linux"
+    ],
+    "48-q-p2-setup-env-2-ip": [
+      "Residential"
+    ],
+    "49-q-p2-setup-env-3-iprot": "Unclear/not reported",
+    "50-q-p2-setup-env-4-geo": [
+      "Africa"
+    ],
+    "51-q-p2-setup-env-5-time": false,
+    "52-q-p2-setup-1-state": [
+      "State accumulated"
+    ],
+    "54-q-p2-setup-3-auth": "No",
+    "55-q-p2-setup-4-addactions": [
+      "Cookie Interaction"
+    ],
+    "56-q-p2-process-1-bot": false,
+    "57-q-p2-process-2-crawlspecific": true,
+    "58-q-p2-process-3-pageload": [
+      "120s"
+    ],
+    "60-q-p2-process-4-pagestay": [
+      "Average times reported"
+    ],
+    "64-q-p2-process-7-datacollected": [
+      "API invocations"
+    ],
+    "65-q-p2-process-8-parallel": [
+      "1"
+    ],
+    "67-q-p2-process-9-reqssecond": "5",
+    "68-q-p2-crawlduration-1-duration": "unclear/not reported",
+    "69-q-p2-crawlmultiple-1-multiple": 5,
+    "70-q-p2-crawlmultiple-2-multipledetails": [
+      "Robustness (includes testing multiple datasets)"
+    ],
+    "71-q-p2-analysis-1-exclusion": [
+      "4XX"
+    ],
+    "72-q-p2-analysis-2-presentation": [
+      "Total numbers"
+    ],
+    "73-q-p3-problems-1-genreport": "Nothing",
+    "74-q-p3-problems-2-genown": "NA",
+    "76-q-p3-factors-1-factors": true,
+    "77-q-p3-factors-2-factorsloc": [
+      "Limitations"
+    ],
+    "78-q-p3-factors-3-factorscat": [
+      "Crawler Implementation"
+    ],
+    "80-q-p3-factors-5-implementation": [
+      "Browser"
+    ],
+    "85-q-p3-factortesting-1-testing": false,
+    "88-q-p4-practices-1-limitations": false,
+    "91-q-p4-practices-4-ethics": false,
+    "94-q-p4-practices-6-5-avail": [
+      "No such section"
+    ],
+    "95-q-p4-practices-7-code": "Dead link",
+    "96-q-p4-practices-8-data": "Empty repo",
+    "97-q-p4-practices-9-codewhere": [
+      "Github"
+    ],
+    "98-q-p4-practices-10-datawhere": [
+      "Big Query"
+    ],
+    "99-q-p4-practices-11-artifact-eval": [
+      "No"
+    ],
+    "pageNo": 5
+  }
+}

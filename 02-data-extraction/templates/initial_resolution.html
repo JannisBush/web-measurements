@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Initial Resolution - Paper {{ paper.id }}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ url_for('static', filename='survey-core@2.0.10/survey-core.css') }}" type="text/css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='conflict-resolution.css') }}" type="text/css" rel="stylesheet">
+</head>
+<body>
+    <div class="header">
+        <h1>{{ paper.title }}</h1>
+        <div class="paper-info">
+            <strong>Authors:</strong> {{ paper.authors }}<br>
+            <strong>Conference:</strong> {{ paper.conference }} {{ paper.year }}<br>
+            <strong>Paper ID:</strong> {{ paper.id }}<br>
+            <strong>Resolver:</strong> <span class="resolver-name">{{ coder_name }}</span>
+        </div>
+        <a href="/conflicts" class="back-link">← Back to Conflict List</a>
+    </div>
+    
+    <div class="progress-bar-container">
+        <div class="progress-info">
+            <span class="progress-text">
+                <strong>Progress:</strong> <span id="resolved-count">0</span> of <span id="total-conflicts">0</span> conflicts resolved
+            </span>
+            <span class="progress-text" id="completion-status"></span>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+        </div>
+    </div>
+    
+    {% if error %}
+    <div class="error-container">
+        <div class="error">
+            <h3>Error</h3>
+            <p>{{ error }}</p>
+            <a href="/initial-conflicts" class="retry-btn">← Back to Paper List</a>
+        </div>
+    </div>
+    {% else %}
+    <div class="conflicts-container">
+        <div class="conflicts-header">
+            <div>Question ID</div>
+            <div id="coder1-header">Coder 1</div>
+            <div id="coder2-header">Coder 2</div>
+            <div>Your Decision</div>
+        </div>
+        
+        <div class="view-controls">
+            <button id="toggle-view-btn" class="toggle-view-btn" onclick="conflictManager.toggleView()">
+                Show All Questions
+            </button>
+            <button id="hide-resolved-btn" class="toggle-view-btn" onclick="conflictManager.toggleHideResolved()">
+                Hide Resolved
+            </button>
+            <span class="view-status" id="view-status">Currently showing: Conflicts only</span>
+        </div>
+        
+        <div id="questions-list" class="loading">
+            Loading conflicts...
+        </div>
+    </div>
+    {% endif %}
+    
+    <script>
+        // Template variables for JavaScript
+        const paperId = '{{ paper.id }}';
+        const availableCoders = {{ available_coders|tojson|safe }};
+        const mode = 'initial';
+        const coderName = '{{ coder_name }}';
+        const schema = {{ schema|tojson|safe }};
+    </script>
+    <script src="{{ url_for('static', filename='conflict-resolution.js') }}"></script>
+</body>
+</html>

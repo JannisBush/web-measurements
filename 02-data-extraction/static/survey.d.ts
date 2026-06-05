@@ -1,0 +1,1 @@
+declare const Survey: typeof import("survey-core");

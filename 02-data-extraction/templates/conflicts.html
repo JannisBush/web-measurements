@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Conflict Resolution - Meta Crawling Data Extraction</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ url_for('static', filename='survey-core@2.0.10/survey-core.css') }}" type="text/css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='conflict-resolution.css') }}" type="text/css" rel="stylesheet">
+    <style>
+        .papers-table {
+            width: 100%;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .papers-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .papers-table th {
+            background: #f8f9fa;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #dee2e6;
+            color: #495057;
+        }
+        
+        .papers-table td {
+            padding: 12px;
+            border-bottom: 1px solid #dee2e6;
+            vertical-align: middle;
+        }
+        
+        .papers-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .papers-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .paper-title-cell {
+            font-weight: 500;
+            color: #212529;
+            max-width: 400px;
+        }
+        
+        .paper-meta-small {
+            font-size: 12px;
+            color: #6c757d;
+            margin-top: 4px;
+        }
+        
+        .conflict-count {
+            font-weight: 600;
+            color: #dc3545;
+        }
+        
+        .initial-status {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        
+        .coder-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .coder-status.completed {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .coder-status.pending {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+            flex-direction: column;
+        }
+        
+        .action-btn {
+            padding: 6px 12px;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            background: white;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.2s;
+            text-align: center;
+            text-decoration: none;
+            color: #495057;
+            display: block;
+        }
+        
+        .action-btn:hover:not(.disabled) {
+            background: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
+        
+        .action-btn.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background: #e9ecef;
+        }
+        
+        .action-btn.initial {
+            border-color: #007bff;
+            color: #007bff;
+        }
+        
+        .action-btn.final {
+            border-color: #28a745;
+            color: #28a745;
+        }
+        
+        .action-btn.final:hover:not(.disabled) {
+            background: #28a745;
+        }
+        
+        .final-status {
+            font-size: 13px;
+        }
+        
+        .final-status.ready {
+            color: #28a745;
+            font-weight: 500;
+        }
+        
+        .final-status.not-ready {
+            color: #6c757d;
+        }
+        
+        .final-status.in-progress {
+            color: #ffc107;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Conflict Resolution</h1>
+        <p>Manage initial and final conflict resolution for dual-coded papers</p>
+    </div>
+    
+    <div class="progress-summary">
+        <h2>Progress Summary</h2>
+        <div class="progress-stats">
+            <div class="stat-item">
+                <span class="stat-number" id="total-papers">{{ papers|length }}</span>
+                <div class="stat-label">Papers with Conflicts</div>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="resolved-papers">0</span>
+                <div class="stat-label">Fully Resolved</div>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="pending-papers">{{ papers|length }}</span>
+                <div class="stat-label">Pending Resolution</div>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="total-conflicts">-</span>
+                <div class="stat-label">Total Conflicts</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="papers-container">
+        <div class="papers-header">
+            <h2>Papers Requiring Conflict Resolution</h2>
+        </div>
+        
+        {% if error %}
+            <div class="error">
+                <h3>Error</h3>
+                <p>{{ error }}</p>
+            </div>
+        {% elif message %}
+            <div class="no-papers">
+                <h3>{{ message }}</h3>
+            </div>
+        {% elif papers %}
+            <div class="papers-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Paper</th>
+                            <th>Conflicts</th>
+                            <th>Initial Resolution</th>
+                            <th>Actions</th>
+                            <th>Final Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="papers-table">
+                        {% for paper in papers %}
+                        <tr data-paper-id="{{ paper.id }}">
+                            <td>
+                                <div class="paper-title-cell"><a href=/static/pdf/{{ paper.pdf_path }} target="_blank">{{ paper.title }}</a></div>
+                                <div class="paper-meta-small">
+                                    {{ paper.authors[:50] }}{% if paper.authors|length > 50 %}...{% endif %} | 
+                                    {{ paper.conference }} {{ paper.year }} | 
+                                    ID: {{ paper.id }}
+                                </div>
+                            </td>
+                            <td>
+                                <span class="conflict-count" id="conflicts-{{ paper.id }}">-</span>
+                            </td>
+                            <td>
+                                <div class="initial-status" id="initial-status-{{ paper.id }}">
+                                        {% for coder in paper.coders %}
+                                            {% if paper.initial_resolution_status and coder in paper.initial_resolution_status.coders and paper.initial_resolution_status.coders[coder].completed %}
+                                                <span class="coder-status completed">✓ {{ coder }}</span>
+                                            {% else %}
+                                                <span class="coder-status pending">✗ {{ coder }}</span>
+                                            {% endif %}
+                                        {% endfor %}
+                                </div>
+                            </td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn initial" 
+                                            data-paper-id="{{ paper.id }}" 
+                                            data-coders="{{ paper.coders|join(',') }}">
+                                        Initial Resolution
+                                    </button>
+                                    <button class="action-btn final" 
+                                            id="final-btn-{{ paper.id }}" 
+                                            data-paper-id="{{ paper.id }}">
+                                        Final Resolution
+                                    </button>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="final-status" id="final-status-{{ paper.id }}">
+                                    Loading...
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="no-papers">
+                <h3>No Conflicts Found</h3>
+                <p>All papers have been resolved or no papers have multiple coder responses.</p>
+            </div>
+        {% endif %}
+    </div>
+    
+    <!-- Coder Selection Modal -->
+    <div id="coder-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center;">
+        <div style="background: white; padding: 30px; border-radius: 8px; max-width: 400px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <h3 style="margin-top: 0;">Who are you?</h3>
+            <p style="color: #6c757d; font-size: 14px;">Select your name to proceed with initial resolution:</p>
+            <div id="coder-buttons" style="display: flex; flex-direction: column; gap: 10px; margin-top: 20px;">
+                <!-- Buttons will be inserted here -->
+            </div>
+            <button onclick="closeCoderModal()" style="margin-top: 20px; padding: 8px 16px; border: 1px solid #dee2e6; border-radius: 4px; background: white; cursor: pointer; width: 100%;">
+                Cancel
+            </button>
+        </div>
+    </div>
+    
+    <script>
+        let selectedPaperId = null;
+        let selectedCoders = [];
+        
+        function showCoderSelection(paperId, coders) {
+            selectedPaperId = paperId;
+            selectedCoders = coders;
+            
+            const modal = document.getElementById('coder-modal');
+            const buttonsContainer = document.getElementById('coder-buttons');
+            
+            // Clear existing buttons
+            buttonsContainer.innerHTML = '';
+            
+            // Create button for each coder
+            coders.forEach(coder => {
+                const button = document.createElement('button');
+                button.textContent = coder;
+                button.style.cssText = 'padding: 12px 20px; border: 2px solid #007bff; border-radius: 4px; background: white; color: #007bff; cursor: pointer; font-size: 15px; font-weight: 500; transition: all 0.2s;';
+                button.onmouseover = function() {
+                    this.style.background = '#007bff';
+                    this.style.color = 'white';
+                };
+                button.onmouseout = function() {
+                    this.style.background = 'white';
+                    this.style.color = '#007bff';
+                };
+                button.onclick = function() {
+                    navigateToInitial(paperId, coder);
+                };
+                buttonsContainer.appendChild(button);
+            });
+            
+            modal.style.display = 'flex';
+        }
+        
+        function closeCoderModal() {
+            document.getElementById('coder-modal').style.display = 'none';
+            selectedPaperId = null;
+            selectedCoders = [];
+        }
+        
+        function navigateToInitial(paperId, coderName) {
+            window.location.href = `/initial-conflicts/${paperId}?coder=${encodeURIComponent(coderName)}`;
+        }
+        
+        function navigateToFinal(paperId) {
+            window.location.href = `/conflicts/paper/${paperId}`;
+        }
+        
+        // Close modal when clicking outside
+        document.getElementById('coder-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeCoderModal();
+            }
+        });
+        
+        // Set up event listeners for buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initial resolution buttons
+            document.querySelectorAll('.action-btn.initial').forEach(button => {
+                button.addEventListener('click', function() {
+                    const paperId = this.getAttribute('data-paper-id');
+                    const codersStr = this.getAttribute('data-coders');
+                    const coders = codersStr ? codersStr.split(',') : [];
+                    showCoderSelection(paperId, coders);
+                });
+            });
+            
+            // Final resolution buttons
+            document.querySelectorAll('.action-btn.final').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    if (this.classList.contains('disabled')) {
+                        e.preventDefault();
+                        if (this.getAttribute('data-show-alert') === 'true') {
+                            alert('Both coders must complete initial resolution before final resolution can begin.');
+                        }
+                        return;
+                    }
+                    const paperId = this.getAttribute('data-paper-id');
+                    navigateToFinal(paperId);
+                });
+            });
+            
+            // Load progress summary
+            loadProgressSummary();
+        });
+
+        function reorderPapersByFinalStatus() {
+            const container = document.getElementById('papers-table');
+            if (!container) return;
+
+            const priority = {
+                'in-progress': 1,
+                'not-ready': 2,
+                'ready': 3
+            };
+
+            const paperRows = Array.from(container.children);
+
+            paperRows.sort((a, b) => {
+                const aStatus = a.querySelector('.final-status');
+                const bStatus = b.querySelector('.final-status');
+
+                const aClass = Object.keys(priority).find(c => aStatus?.classList.contains(c)) || 'ready';
+                const bClass = Object.keys(priority).find(c => bStatus?.classList.contains(c)) || 'ready';
+
+                return priority[aClass] - priority[bClass];
+            });
+
+            paperRows.forEach(row => container.appendChild(row));
+        }
+        
+        // Load progress summary data with enhanced tracking
+        async function loadProgressSummary() {
+            try {
+                let totalConflicts = 0;
+                let totalResolvedConflicts = 0;
+                let resolvedPapers = 0;
+                let partiallyResolvedPapers = 0;
+                
+                const papers = {{ papers|tojson|safe if papers else '[]' }};
+                //console.log(papers);
+                
+                if (!papers || papers.length === 0) {
+                    return;
+                }
+                
+                for (let i = 0; i < papers.length; i++) {
+                    const paper = papers[i];
+                    
+                    try {
+                        const response = await fetch(`/api/conflicts/${paper.id}`);
+                        if (response.ok) {
+                            const data = await response.json();
+                            const paperConflicts = data.conflicts.length;
+                            const paperResolved = data.resolved_count;
+                            
+                            totalConflicts += paperConflicts;
+                            totalResolvedConflicts += paperResolved;
+                            
+                            // Update conflict count
+                            const conflictCell = document.getElementById(`conflicts-${paper.id}`);
+                            if (conflictCell) {
+                                conflictCell.textContent = `${paperConflicts} conflicts`;
+                            }
+                            
+                            // Update final status
+                            const finalStatusCell = document.getElementById(`final-status-${paper.id}`);
+                            const finalBtn = document.getElementById(`final-btn-${paper.id}`);
+                            
+                            if (paperConflicts > 0 && paperResolved === paperConflicts) {
+                                resolvedPapers++;
+                                if (finalStatusCell) {
+                                    finalStatusCell.textContent = '✓ Complete';
+                                    finalStatusCell.className = 'final-status ready';
+                                }
+                            } else if (paperResolved > 0) {
+                                partiallyResolvedPapers++;
+                                if (finalStatusCell) {
+                                    finalStatusCell.textContent = `${paperResolved}/${paperConflicts} resolved`;
+                                    finalStatusCell.className = 'final-status in-progress';
+                                }
+                            } else if (paperConflicts == 0) {
+                                resolvedPapers++;
+                                if (finalStatusCell) {
+                                    finalStatusCell.textContent ='✓ Complete (no conflicts; likely removed paper)'
+                                    finalStatusCell.className = 'final-status ready';
+                                }
+                            } else {
+                                if (finalStatusCell) {
+                                    finalStatusCell.textContent = 'Not started';
+                                    finalStatusCell.className = 'final-status not-ready';
+                                }
+                            }
+                            
+                            // Check if both coders completed initial resolution
+                            const initialStatus = await fetch(`/api/initial-resolution/${paper.id}/status`);
+                            if (initialStatus.ok) {
+                                const statusData = await initialStatus.json();
+                                const isComplete = statusData.is_complete;
+                                
+                                // Enable/disable final button based on initial resolution completion
+                                if (!isComplete && !data.has_final_response) {
+                                    if (finalBtn) {
+                                        finalBtn.classList.add('disabled');
+                                        finalBtn.title = 'Both coders must complete initial resolution first';
+                                        finalBtn.setAttribute('data-show-alert', 'true');
+                                    }
+                                    if (finalStatusCell && finalStatusCell.textContent === 'Not started') {
+                                        finalStatusCell.textContent = '🔒 Locked';
+                                        finalStatusCell.className = 'final-status not-ready';
+                                    }
+                                }
+                            }
+                        }
+                    } catch (error) {
+                        console.error(`Error loading data for paper ${paper.id}:`, error);
+                        const conflictCell = document.getElementById(`conflicts-${paper.id}`);
+                        if (conflictCell) {
+                            conflictCell.textContent = 'Error';
+                        }
+                        const finalStatusCell = document.getElementById(`final-status-${paper.id}`);
+                        if (finalStatusCell) {
+                            finalStatusCell.textContent = 'Error';
+                            finalStatusCell.className = 'final-status not-ready';
+                        }
+                    }
+                }
+                
+                reorderPapersByFinalStatus();
+                // Update progress stats
+                document.getElementById('resolved-papers').textContent = resolvedPapers;
+                document.getElementById('pending-papers').textContent = papers.length - resolvedPapers;
+                document.getElementById('total-conflicts').textContent = totalConflicts;
+                
+                // Add overall progress percentage
+                const overallProgress = totalConflicts > 0 ? Math.round((totalResolvedConflicts / totalConflicts) * 100) : 0;
+                updateOverallProgress(overallProgress, totalResolvedConflicts, totalConflicts);
+                
+            } catch (error) {
+                console.error('Error loading progress summary:', error);
+                document.getElementById('total-conflicts').textContent = 'Error';
+            }
+        }
+        
+        function updateOverallProgress(percentage, resolved, total) {
+            // Add overall progress indicator to summary
+            const progressSummary = document.querySelector('.progress-summary');
+            
+            let overallDiv = document.getElementById('overall-progress');
+            if (!overallDiv) {
+                overallDiv = document.createElement('div');
+                overallDiv.id = 'overall-progress';
+                overallDiv.className = 'overall-progress';
+                progressSummary.appendChild(overallDiv);
+            }
+            
+            overallDiv.innerHTML = `
+                <h3>Overall Progress: ${percentage}%</h3>
+                <div class="overall-progress-bar">
+                    <div class="overall-progress-fill" style="width: ${percentage}%"></div>
+                </div>
+                <div class="overall-progress-text">${resolved} of ${total} total conflicts resolved</div>
+            `;
+        }
+        
+        // Load progress summary when page loads
+        document.addEventListener('DOMContentLoaded', loadProgressSummary);
+    </script>
+</body>
+</html>

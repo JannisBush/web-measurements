@@ -1,0 +1,104 @@
+{
+  "3731": {
+    "resolution_time": "2026-06-05T16:44:56.359876+00:00",
+    "resolutions": {
+      "8-q-p1-major-1-maintopic": {
+        "decision": "Union",
+        "timestamp": "2026-06-05T16:44:39.519503+00:00"
+      },
+      "14-q-p1-major-7-crawlpercentage": {
+        "decision": "CoderB",
+        "timestamp": "2026-06-05T16:44:40.015186+00:00"
+      },
+      "15-q-p1-major-8-crawlpurpose": {
+        "decision": "CoderB",
+        "timestamp": "2026-06-05T16:44:40.928503+00:00"
+      },
+      "16-q-p1-major-9-multicrawl": {
+        "decision": "CoderA",
+        "timestamp": "2026-06-05T16:44:41.351038+00:00"
+      },
+      "18-q-p2-dataset-website-2-subsetsize": {
+        "decision": "Discuss",
+        "timestamp": "2026-06-05T16:44:42.475587+00:00"
+      },
+      "19-q-p2-dataset-website-2-details": {
+        "decision": "CoderB",
+        "timestamp": "2026-06-05T16:44:42.863249+00:00"
+      },
+      "20-q-p2-dataset-website-3-subsetsampling": {
+        "decision": "CoderA",
+        "timestamp": "2026-06-05T16:44:44.140325+00:00"
+      },
+      "21-q-p2-dataset-website-4-optout": {
+        "decision": "CoderB",
+        "timestamp": "2026-06-05T16:44:44.724117+00:00"
+      },
+      "42-q-p2-setup-implementation-12-crawlertype": {
+        "decision": "CoderB",
+        "timestamp": "2026-06-05T16:44:45.251295+00:00"
+      },
+      "48-q-p2-setup-env-2-ip": {
+        "decision": "CoderA",
+        "timestamp": "2026-06-05T16:44:46.448169+00:00"
+      },
+      "51-q-p2-setup-env-5-time": {
+        "decision": "Discuss",
+        "timestamp": "2026-06-05T16:44:47.530295+00:00"
+      },
+      "52-q-p2-setup-1-state": {
+        "decision": "Union",
+        "timestamp": "2026-06-05T16:44:47.918967+00:00"
+      },
+      "60-q-p2-process-4-pagestay": {
+        "decision": "CoderB",
+        "timestamp": "2026-06-05T16:44:48.337438+00:00"
+      },
+      "69-q-p2-crawlmultiple-1-multiple": {
+        "decision": "CoderB",
+        "timestamp": "2026-06-05T16:44:49.748286+00:00"
+      },
+      "72-q-p2-analysis-2-presentation": {
+        "decision": "CoderB",
+        "timestamp": "2026-06-05T16:44:50.095276+00:00"
+      },
+      "76-q-p3-factors-1-factors": {
+        "decision": "CoderB",
+        "timestamp": "2026-06-05T16:44:50.619367+00:00"
+      },
+      "77-q-p3-factors-2-factorsloc": {
+        "decision": "CoderB",
+        "timestamp": "2026-06-05T16:44:51.042491+00:00"
+      },
+      "78-q-p3-factors-3-factorscat": {
+        "decision": "Union",
+        "timestamp": "2026-06-05T16:44:51.743003+00:00"
+      },
+      "80-q-p3-factors-5-implementation": {
+        "decision": "CoderA",
+        "timestamp": "2026-06-05T16:44:52.163569+00:00"
+      },
+      "88-q-p4-practices-1-limitations": {
+        "decision": "CoderA",
+        "timestamp": "2026-06-05T16:44:53.158325+00:00"
+      },
+      "89-q-p4-practices-2-limitationsloc": {
+        "decision": "CoderB",
+        "timestamp": "2026-06-05T16:44:53.575375+00:00"
+      },
+      "90-q-p4-practices-3-limitationsdetails": {
+        "decision": "Union",
+        "timestamp": "2026-06-05T16:44:54.623783+00:00"
+      },
+      "96-q-p4-practices-8-data": {
+        "decision": "CoderB",
+        "timestamp": "2026-06-05T16:44:55.868628+00:00"
+      },
+      "98-q-p4-practices-10-datawhere": {
+        "decision": "CoderA",
+        "timestamp": "2026-06-05T16:44:56.359854+00:00"
+      }
+    },
+    "resolver_name": "CoderB"
+  }
+}
