@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WebMeasurementReport v0.1</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="mark" aria-hidden="true">WMR</div>
+          <div>
+            <h1>WebMeasurementReport</h1>
+            <p>v0.1 static reporter</p>
+          </div>
+        </div>
+
+        <nav class="section-nav" id="sectionNav" aria-label="Report sections"></nav>
+
+        <div class="sidebar-actions">
+          <button class="ghost-button" id="loadExample" type="button">Load example</button>
+          <button class="ghost-button" id="resetReport" type="button">Reset</button>
+        </div>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Active web measurements</p>
+            <h2>Register a measurement report</h2>
+          </div>
+          <div class="topbar-actions">
+            <label class="file-button">
+              Import JSON
+              <input id="importJson" type="file" accept="application/json">
+            </label>
+            <button class="primary-button" id="downloadJson" type="button">Download JSON</button>
+          </div>
+        </header>
+
+        <section class="summary-band" aria-label="Report completeness">
+          <div>
+            <span class="metric" id="reportedMetric">0</span>
+            <span class="metric-label">reported</span>
+          </div>
+          <div>
+            <span class="metric" id="recommendedMetric">0</span>
+            <span class="metric-label">missing</span>
+          </div>
+          <div>
+            <span class="metric" id="naMetric">0</span>
+            <span class="metric-label">not applicable</span>
+          </div>
+          <div class="scope-note">Drafts are saved locally in this browser. Export JSON to keep a portable copy.</div>
+        </section>
+
+        <section class="panel" aria-labelledby="metadataTitle">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Study unit</p>
+              <h3 id="metadataTitle">Report metadata</h3>
+            </div>
+          </div>
+          <div class="metadata-grid">
+            <label>
+              Report title
+              <input id="reportTitle" type="text" autocomplete="off" placeholder="e.g. Cookie banner measurement across EU news sites">
+            </label>
+          </div>
+        </section>
+
+        <section class="content-grid">
+          <section class="panel form-panel" aria-labelledby="formTitle">
+            <div class="panel-heading sticky-heading">
+              <div>
+                <p class="eyebrow">Factor registry</p>
+                <h3 id="formTitle">Reporting fields</h3>
+              </div>
+              <div class="view-tools">
+                <button class="tool-button active" id="showAll" type="button">All</button>
+                <button class="tool-button" id="showMissing" type="button">Missing</button>
+              </div>
+            </div>
+            <div id="factorForm" class="factor-form"></div>
+          </section>
+        </section>
+
+        <section class="preview-stack" id="summaryExport">
+            <section class="panel" aria-labelledby="previewTitle">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Publication preview</p>
+                  <h3 id="previewTitle">Summary table</h3>
+                </div>
+                <div class="view-tools">
+                  <button class="tool-button active" id="compactTable" type="button">Compact</button>
+                  <button class="tool-button" id="fullTable" type="button">Full</button>
+                </div>
+              </div>
+              <div class="table-wrap">
+                <table id="previewTable">
+                  <thead>
+                    <tr>
+                      <th>Factor</th>
+                      <th>Subfactor</th>
+                      <th>Reported value</th>
+                      <th>Notes</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </section>
+
+            <section class="panel" aria-labelledby="exportTitle">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Export</p>
+                  <h3 id="exportTitle">LaTeX and JSON</h3>
+                </div>
+                <div class="view-tools">
+                  <button class="tool-button active" data-export-tab="latex" type="button">LaTeX</button>
+                  <button class="tool-button" data-export-tab="json" type="button">JSON</button>
+                </div>
+              </div>
+              <textarea id="exportOutput" spellcheck="false" aria-label="Export output"></textarea>
+              <div class="export-actions">
+                <button class="ghost-button" id="copyExport" type="button">Copy export</button>
+              </div>
+            </section>
+        </section>
+      </main>
+    </div>
+
+    <script src="registry.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

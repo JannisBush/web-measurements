@@ -1,0 +1,591 @@
+{
+  "version": "0.1",
+  "metadata": {
+    "title": "Example Dummy Experiment"
+  },
+  "factors": {
+    "D-Site": {
+      "entries": [
+        {
+          "groups": {
+            "D-Site-Source": {
+              "status": "reported",
+              "note": "Default config",
+              "fields": {
+                "D-Site-Source": "Tranco",
+                "D-Site-SourceId": "334VL",
+                "D-Site-Date": "2026-06-01",
+                "D-Site-Link": "https://tranco-list.eu/list/334VL/1000000"
+              },
+              "autoNa": false
+            },
+            "D-Site-Count": {
+              "status": "reported",
+              "note": "",
+              "fields": {
+                "D-Site-Count": "5000"
+              },
+              "autoNa": false
+            },
+            "D-Site-Sampling": {
+              "status": "reported",
+              "note": "",
+              "fields": {
+                "D-Site-Sampling": "Top-N ranking"
+              },
+              "autoNa": false
+            },
+            "D-Site-Removed": {
+              "status": "reported",
+              "note": "Only .com, no DNS errors",
+              "fields": {
+                "D-Site-Removed": [
+                  "Unreachable",
+                  "TLD filter"
+                ]
+              },
+              "autoNa": false
+            },
+            "D-Site-CountFinal": {
+              "status": "reported",
+              "note": "",
+              "fields": {
+                "D-Site-CountFinal": "4000"
+              },
+              "autoNa": false
+            }
+          }
+        }
+      ]
+    },
+    "D-Page": {
+      "entries": [
+        {
+          "groups": {
+            "D-Page-Scope": {
+              "status": "reported",
+              "note": "",
+              "fields": {
+                "D-Page-Scope": "Landing page only"
+              },
+              "autoNa": false
+            },
+            "D-Page-Conversion": {
+              "status": "reported",
+              "note": "",
+              "fields": {
+                "D-Page-Conversion": [
+                  "https://domain/",
+                  "http://domain/"
+                ]
+              },
+              "autoNa": false
+            },
+            "D-Page-Limit": {
+              "status": "not_applicable",
+              "note": "",
+              "fields": {
+                "D-Page-Limit": ""
+              },
+              "autoNa": true
+            },
+            "D-Page-Depth": {
+              "status": "not_applicable",
+              "note": "",
+              "fields": {
+                "D-Page-Depth": ""
+              },
+              "autoNa": true
+            },
+            "D-Page-Navigation": {
+              "status": "not_applicable",
+              "note": "",
+              "fields": {
+                "D-Page-Navigation": ""
+              },
+              "autoNa": true
+            },
+            "D-Page-SameSite": {
+              "status": "not_applicable",
+              "note": "",
+              "fields": {
+                "D-Page-SameSite": ""
+              },
+              "autoNa": true
+            }
+          }
+        }
+      ]
+    },
+    "D-Other": {
+      "entries": [
+        {
+          "groups": {
+            "D-Other-Description": {
+              "status": "not_applicable",
+              "note": "",
+              "fields": {
+                "D-Other-Description": ""
+              },
+              "autoNa": false
+            }
+          }
+        }
+      ]
+    },
+    "B-Type": {
+      "entries": [
+        {
+          "groups": {
+            "B-Type-Kind": {
+              "status": "reported",
+              "note": "",
+              "fields": {
+                "B-Type-Kind": "Browser-based"
+              },
+              "autoNa": false
+            }
+          }
+        }
+      ]
+    },
+    "B-Instr": {
+      "entries": [
+        {
+          "groups": {
+            "B-Instr-Tool": {
+              "status": "reported",
+              "note": "",
+              "fields": {
+                "B-Instr-Tool": "Selenium",
+                "B-Instr-Version": "4.40"
+              },
+              "autoNa": false
+            },
+            "B-Instr-Modification": {
+              "status": "reported",
+              "note": "Using CDP Page.addScriptToEvaluateOnNewDocument, see Section 4.2",
+              "fields": {
+                "B-Instr-Modification": [
+                  "Injected JavaScript"
+                ]
+              },
+              "autoNa": false
+            }
+          }
+        }
+      ]
+    },
+    "B-Brow": {
+      "entries": [
+        {
+          "groups": {
+            "B-Brow-Browser": {
+              "status": "not_reported",
+              "note": "",
+              "fields": {
+                "B-Brow-Browser": "Chromium",
+                "B-Brow-Version": "148.0.7778.96"
+              },
+              "autoNa": false
+            }
+          }
+        }
+      ]
+    },
+    "B-UA": {
+      "entries": [
+        {
+          "groups": {
+            "B-UA-Policy": {
+              "status": "reported",
+              "note": "",
+              "fields": {
+                "B-UA-Policy": "Browser default"
+              },
+              "autoNa": false
+            }
+          }
+        }
+      ]
+    },
+    "B-Head": {
+      "entries": [
+        {
+          "groups": {
+            "B-Head-Mode": {
+              "status": "reported",
+              "note": "--headless=new",
+              "fields": {
+                "B-Head-Mode": "Headless"
+              },
+              "autoNa": false
+            }
+          }
+        }
+      ]
+    },
+    "B-Set": {
+      "entries": [
+        {
+          "groups": {
+            "B-Set-Window": {
+              "status": "unknown",
+              "note": "",
+              "fields": {
+                "B-Set-Window": ""
+              },
+              "autoNa": false
+            },
+            "B-Set-Flags": {
+              "status": "reported",
+              "note": "Required to test on localhost",
+              "fields": {
+                "B-Set-Flags": "--unsafely-treat-insecure-origin-as-secure"
+              },
+              "autoNa": false
+            }
+          }
+        }
+      ]
+    },
+    "E-Geo": {
+      "entries": [
+        {
+          "groups": {
+            "E-Geo-Location": {
+              "status": "reported",
+              "note": "",
+              "fields": {
+                "E-Geo-Location": [
+                  "United States"
+                ]
+              },
+              "autoNa": false
+            }
+          }
+        }
+      ]
+    },
+    "E-IP": {
+      "entries": [
+        {
+          "groups": {
+            "E-IP-Type": {
+              "status": "reported",
+              "note": "",
+              "fields": {
+                "E-IP-Type": [
+                  "University"
+                ]
+              },
+              "autoNa": false
+            },
+            "E-IP-Rotation": {
+              "status": "reported",
+              "note": "",
+              "fields": {
+                "E-IP-Rotation": "Static IP"
+              },
+              "autoNa": false
+            }
+          }
+        }
+      ]
+    },
+    "E-Platform": {
+      "entries": [
+        {
+          "groups": {
+            "E-Platform-OS": {
+              "status": "reported",
+              "note": "11",
+              "fields": {
+                "E-Platform-OS": "Windows"
+              },
+              "autoNa": false
+            }
+          }
+        }
+      ]
+    },
+    "P-State": {
+      "entries": [
+        {
+          "groups": {
+            "P-State-Mode": {
+              "status": "reported",
+              "note": "",
+              "fields": {
+                "P-State-Mode": [
+                  "Stateless"
+                ]
+              },
+              "autoNa": false
+            },
+            "P-State-Scope": {
+              "status": "not_applicable",
+              "note": "",
+              "fields": {
+                "P-State-Scope": ""
+              },
+              "autoNa": true
+            }
+          }
+        }
+      ]
+    },
+    "P-Time": {
+      "entries": [
+        {
+          "groups": {
+            "P-Time-LoadEvent": {
+              "status": "reported",
+              "note": "",
+              "fields": {
+                "P-Time-LoadEvent": "DOMContentLoaded"
+              },
+              "autoNa": false
+            },
+            "P-Time-Timeout": {
+              "status": "reported",
+              "note": "",
+              "fields": {
+                "P-Time-Timeout": "30"
+              },
+              "autoNa": false
+            },
+            "P-Time-Dwell": {
+              "status": "reported",
+              "note": "",
+              "fields": {
+                "P-Time-Dwell": "0"
+              },
+              "autoNa": false
+            }
+          }
+        }
+      ]
+    },
+    "P-Interact": {
+      "entries": [
+        {
+          "groups": {
+            "P-Interact-Strategy": {
+              "status": "reported",
+              "note": "",
+              "fields": {
+                "P-Interact-Strategy": [
+                  "None"
+                ]
+              },
+              "autoNa": false
+            }
+          }
+        }
+      ]
+    },
+    "P-Auth": {
+      "entries": [
+        {
+          "groups": {
+            "P-Auth-Use": {
+              "status": "reported",
+              "note": "",
+              "fields": {
+                "P-Auth-Use": "None"
+              },
+              "autoNa": false
+            }
+          }
+        }
+      ]
+    },
+    "P-Cookie": {
+      "entries": [
+        {
+          "groups": {
+            "P-Cookie-Policy": {
+              "status": "reported",
+              "note": "",
+              "fields": {
+                "P-Cookie-Policy": "No interaction"
+              },
+              "autoNa": false
+            }
+          }
+        }
+      ]
+    },
+    "A-Detect": {
+      "entries": [
+        {
+          "groups": {
+            "A-Detect-Method": {
+              "status": "reported",
+              "note": "",
+              "fields": {
+                "A-Detect-Method": "See Sec 4.2"
+              },
+              "autoNa": false
+            }
+          }
+        }
+      ]
+    },
+    "A-Clean": {
+      "entries": [
+        {
+          "groups": {
+            "A-Clean-PostExclusion": {
+              "status": "reported",
+              "note": "Sites with more than 1000 messages",
+              "fields": {
+                "A-Clean-PostExclusion": [
+                  "Outliers"
+                ]
+              },
+              "autoNa": false
+            }
+          }
+        }
+      ]
+    },
+    "A-Manual": {
+      "entries": [
+        {
+          "groups": {
+            "A-Manual-Used": {
+              "status": "reported",
+              "note": "Random sample of 100 pages validated. 0 FPs.",
+              "fields": {
+                "A-Manual-Used": "Manual validation"
+              },
+              "autoNa": false
+            }
+          }
+        }
+      ]
+    },
+    "N-Bot": {
+      "entries": [
+        {
+          "groups": {
+            "N-Bot-Tested": {
+              "status": "reported",
+              "note": "",
+              "fields": {
+                "N-Bot-Tested": "Not considered"
+              },
+              "autoNa": false
+            }
+          }
+        }
+      ]
+    },
+    "N-Time": {
+      "entries": [
+        {
+          "groups": {
+            "N-Time-Design": {
+              "status": "reported",
+              "note": "",
+              "fields": {
+                "N-Time-Design": "Single crawl"
+              },
+              "autoNa": false
+            },
+            "N-Time-Date1": {
+              "status": "reported",
+              "note": "",
+              "fields": {
+                "N-Time-Date1": "2026-06-01"
+              },
+              "autoNa": false
+            },
+            "N-Time-Date2": {
+              "status": "reported",
+              "note": "",
+              "fields": {
+                "N-Time-Date2": "2026-06-02"
+              },
+              "autoNa": false
+            }
+          }
+        }
+      ]
+    },
+    "N-Rand": {
+      "entries": [
+        {
+          "groups": {
+            "N-Rand-Tested": {
+              "status": "reported",
+              "note": "Subset of 100 sites measured twice. Results roughly the same.",
+              "fields": {
+                "N-Rand-Tested": "Small-scale experiment"
+              },
+              "autoNa": false
+            }
+          }
+        }
+      ]
+    },
+    "G-Limitations": {
+      "entries": [
+        {
+          "groups": {
+            "G-Limitations-Discussed": {
+              "status": "reported",
+              "note": "See Sec 7.1",
+              "fields": {
+                "G-Limitations-Discussed": "Yes"
+              },
+              "autoNa": false
+            }
+          }
+        }
+      ]
+    },
+    "G-Ethics": {
+      "entries": [
+        {
+          "groups": {
+            "G-Ethics-Discussed": {
+              "status": "reported",
+              "note": "See Sec 7.2",
+              "fields": {
+                "G-Ethics-Discussed": "Yes"
+              },
+              "autoNa": false
+            }
+          }
+        }
+      ]
+    },
+    "G-Open": {
+      "entries": [
+        {
+          "groups": {
+            "G-Open-Code": {
+              "status": "reported",
+              "note": "https://code.code",
+              "fields": {
+                "G-Open-Code": "Public"
+              },
+              "autoNa": false
+            },
+            "G-Open-Data": {
+              "status": "reported",
+              "note": "Exact list of URLs visited in the code repo. Full dataset is too large.",
+              "fields": {
+                "G-Open-Data": "Partially available"
+              },
+              "autoNa": false
+            }
+          }
+        }
+      ]
+    }
+  }
+}
