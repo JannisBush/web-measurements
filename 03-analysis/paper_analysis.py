@@ -857,6 +857,12 @@ def _(df, mo):
     return
 
 
+@app.cell
+def _(df):
+    df.loc[df["32-q-p2-setup-implementation-3-automation"].str.contains("OpenWPM")]["34-q-p2-setup-implementation-5-browserused"]
+    return
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -1124,7 +1130,6 @@ def _(df, mo, pd):
         print("No clear trend across years.")
         mo.output.append(pd.crosstab(df["4-q-p1-meta-1-metadata.conference"], df["88-q-p4-practices-1-limitations"].fillna("None")))
         mo.output.append(pd.crosstab(df["4-q-p1-meta-1-metadata.year"], df["88-q-p4-practices-1-limitations"].fillna("None")))
-
     return lim_false, lim_onlyother, lim_ownsection, lim_true
 
 
@@ -1164,7 +1169,6 @@ def _(df, mo, pd):
         print("No clear differences betwene the conferences, clearly more ethics section over the years (from 11 without anything mentioned in 2021 to only 2 in 2025")
         mo.output.append(pd.crosstab(df["4-q-p1-meta-1-metadata.conference"], df["new_ethics_loc__new_ethics_loc"].fillna("None")))
         mo.output.append(pd.crosstab(df["4-q-p1-meta-1-metadata.year"], df["new_ethics_loc__new_ethics_loc"].fillna("None")))
-
     return (
         ethics_appendix_only,
         ethics_between_the_lines,
