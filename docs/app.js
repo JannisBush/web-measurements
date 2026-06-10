@@ -219,6 +219,7 @@ function escapeLatex(value) {
     .replaceAll("_", "\\_")
     .replaceAll("{", "\\{")
     .replaceAll("}", "\\}")
+    .replaceAll("--", "-{}-")
     .replaceAll("~", "\\textasciitilde{}")
     .replaceAll("^", "\\textasciicircum{}")
     .replace(/\n+/g, " ");

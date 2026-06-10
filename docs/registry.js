@@ -311,7 +311,7 @@ window.WMR_REGISTRY = {
             },
             {
               id: "D-Site-Count",
-              label: "Attempted unique website count",
+              label: "Attempted website count",
               help: "How many distinct websites were attempted to visit?",
               type: "number",
             },
@@ -342,7 +342,7 @@ window.WMR_REGISTRY = {
             },          
             {
               id: "D-Site-CountFinal",
-              label: "Final unique website count",
+              label: "Successful website count",
               help: "How many distinct websites were successfully visited?",
               type: "number",
             },
