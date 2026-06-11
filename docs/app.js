@@ -773,9 +773,17 @@ function toLatex() {
   });
 
   const title = report.metadata.title ? ` for ${report.metadata.title}` : "";
-  return `\\begin{table*}[t]
+  return `
+% @online{WebMeasurementReportV${VERSION},
+%	title = {{WebMeasurementReport} v${VERSION}},
+%	url = {https://anonymous.4open.science/w/web-measurements-477B/},
+%	author = {Anonymous},
+%	urldate = {2026-06-06},
+%	date = {2026},
+%}
+\\begin{table*}[t]
 \\centering
-\\caption{\\textsc{WebMeasurementReport v${VERSION}} summary${escapeLatex(title)}.}
+\\caption{\\textsc{WebMeasurementReport v${VERSION}\\cite{WebMeasurementReportV${VERSION}}} summary${escapeLatex(title)}.}
 \\footnotesize
 \\begin{tabular}{p{0.12\\linewidth}p{0.20\\linewidth}p{0.22\\linewidth}p{0.40\\linewidth}}
 \\toprule
