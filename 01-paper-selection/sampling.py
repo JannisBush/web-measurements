@@ -1,7 +1,7 @@
 import pandas as pd
 
 df = pd.read_csv("01-paper-selection/paper_selection.csv")
-df_in = df.loc[df["In-Scope"] == "yes"]
+df_in = df.loc[df["In-Scope"].isin(["yes", "frame-error"])]
 print(f"Total papers: {len(df)}, In-Scope papers: {len(df_in)}, Sampled papers: {len(df_in.loc[df_in['Coder 1'].notna()])}")
 sampled_orig = df_in.loc[df_in["Coder 1"].notna()]
 
@@ -73,14 +73,14 @@ detailed_sampling_stats(sampled, df_in.loc[df_in["conference_year"] <= 2024])
 ccs_resample = df_in.loc[
     (df_in["conference_name"] == "ccs")
     & (df_in["conference_year"] == 2022)
-    & (df_in["In-Scope"] == "yes")
+    & (df_in["In-Scope"].isin(["yes", "frame-error"]))
     & (df_in["id"].isin(sampled["id"].tolist()) == False)
 ].sample(1, random_state=SEED)
 
 ndss_resample = df_in.loc[
     (df_in["conference_name"] == "ndss")
     & (df_in["conference_year"] == 2023)
-    & (df_in["In-Scope"] == "yes")
+    & (df_in["In-Scope"].isin(["yes", "frame-error"]))
     & (df_in["id"].isin(sampled["id"].tolist()) == False)
 ].sample(1, random_state=SEED)
 
