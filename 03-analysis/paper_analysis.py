@@ -17,8 +17,10 @@ def _():
     import matplotlib.pyplot as plt
     import ast
     from pathlib import Path
+    import polars as pl
+    import svy
 
-    return Counter, ast, mo, pd
+    return Counter, ast, mo, pd, pl, svy
 
 
 @app.cell(hide_code=True)
@@ -1379,6 +1381,139 @@ def _(df, mo, pd):
         ] = "no AE process"
         mo.output.append(df["99-q-p4-practices-11-artifact-eval"].value_counts())
         print("Roughly half of the year/conference combinations have had no AE process, from the other 19 have no artifact, while 15 have at least an available badge and 7 out of these have additional badges.")
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    ## Population Estimates
+
+    - Calculate population-weighted estimates and 95% confidence intervals using svy including the finite population correction
+    - **Requires the dataset to include conference and year data**
+    """)
+    return
+
+
+@app.cell
+def _(df, pd):
+    # Combine the sample with the full dataset
+    all_papers = pd.read_csv("01-paper-selection/paper_selection.csv")
+    all_papers = all_papers.loc[all_papers["In-Scope"] == "yes"]
+    conf_year_count = all_papers.groupby(["conference_name", "conference_year"])["id"].count().to_dict()
+    df["conf_year_count"] = df[["4-q-p1-meta-1-metadata.conference", "4-q-p1-meta-1-metadata.year"]].apply(lambda x: conf_year_count[(x["4-q-p1-meta-1-metadata.conference"], x["4-q-p1-meta-1-metadata.year"])], axis=1)
+    return
+
+
+@app.cell
+def _(ast, df):
+    # Prepare columns for the estimations
+    df["factorcats_mentioned_count"] = df["78-q-p3-factors-3-factorscat"].fillna('[]').apply(ast.literal_eval).apply(len)
+    df["factorcats_mentioned_all"] = df["factorcats_mentioned_count"] == 6
+    df["env_mentioned"] = df["78-q-p3-factors-3-factorscat"].fillna('[]').apply(ast.literal_eval).apply(lambda x: True if "Crawling Environment" in x else False)
+    df["lim_section"] = df["89-q-p4-practices-2-limitationsloc"].str.contains("Own section")
+    return
+
+
+@app.cell
+def _(df, pl, svy):
+    # Prepare the data for svy
+    svy_df = (
+        df[
+            [
+                "4-q-p1-meta-1-metadata.conference",
+                "4-q-p1-meta-1-metadata.year",
+                "conf_year_count",
+                "76-q-p3-factors-1-factors",
+                "factorcats_mentioned_count",
+                "factorcats_mentioned_all",
+                "env_mentioned",
+                "lim_section",
+                "91-q-p4-practices-4-ethics"
+            ]
+        ]
+        .rename(columns={
+            "4-q-p1-meta-1-metadata.conference": "conference",
+            "4-q-p1-meta-1-metadata.year": "year",
+            "conf_year_count": "N_h",
+            "76-q-p3-factors-1-factors": "y",
+        })
+    )
+
+    # Convert to Polars
+    svy_df = pl.from_pandas(svy_df)
+
+    # Create the stratum identifier
+    svy_df = svy_df.with_columns(
+        (
+            pl.col("conference").cast(pl.String)
+            + "_"
+            + pl.col("year").cast(pl.String)
+        ).alias("stratum")
+    )
+
+    # Exactly 2 papers sampled per stratum
+    svy_df = svy_df.with_columns(
+        pl.lit(2).alias("n_h"),
+        (pl.col("N_h") / 2).alias("weight"),
+        pl.col("y").cast(pl.Int8),
+    )
+
+    # Define the stratified survey design.
+    # N_h is the population size of each stratum and therefore
+    # provides the finite population correction.
+    design = svy.Design(
+        stratum="stratum",
+        wgt="weight",
+        pop_size="N_h",
+    )
+
+    sample = svy.Sample(
+        data=svy_df,
+        design=design,
+    )
+
+    # Inspect the design
+    print(sample)
+    return design, sample, svy_df
+
+
+@app.cell
+def _(sample, svy_df):
+    print("\nUnweighted mean any factor mentioned:", svy_df["y"].mean())
+    print("Any factor mentioned:", sample.estimation.mean("y"))
+
+    print("\nUnweighted mean all factorcats mentioned:", svy_df["factorcats_mentioned_all"].mean())
+    print("All factorcats mentioned:", sample.estimation.mean("factorcats_mentioned_all"))
+
+    print("\nUnweighted how many factorcats:", svy_df["factorcats_mentioned_count"].mean(), svy_df["factorcats_mentioned_count"].median())
+    print("How many factorcats mentioned:", sample.estimation.mean("factorcats_mentioned_count"))
+    print("How many factorcats metioned:", sample.estimation.median("factorcats_mentioned_count"))
+    return
+
+
+@app.cell
+def _(df, sample):
+    print(df["env_mentioned"].mean())
+    print(sample.estimation.mean("env_mentioned"))
+    return
+
+
+@app.cell
+def _(design, pl, sample, svy, svy_df):
+    print(sample.estimation.median("factorcats_mentioned_count"))
+    print(svy.Sample(
+        data=svy_df.filter(pl.col("conference") == "popets"),
+        design=design,
+    ).estimation.median("factorcats_mentioned_count"))
+    print(sample.estimation.median("factorcats_mentioned_count", by="conference"))
+    return
+
+
+@app.cell
+def _(sample):
+    print(sample.estimation.mean("lim_section"))
+    print(sample.estimation.mean("91-q-p4-practices-4-ethics"))
     return
 
 
