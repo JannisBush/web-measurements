@@ -3,7 +3,7 @@
 This repository contains the supplementary material for the Paper "SoK: Hidden Variables in Security and Privacy Web Measurements".
 
 ## Installation
-- Install Poetry: https://python-poetry.org/docs/#installation
+- Install Poetry: [https://python-poetry.org/docs/#installation](https://python-poetry.org/docs/#installation)
 - Run `poetry install`
 
 ## 01-paper-selection

@@ -778,7 +778,7 @@ function toLatex() {
 %	title = {{WebMeasurementReport} v${VERSION}},
 %	url = {https://anonymous.4open.science/w/web-measurements-477B/},
 %	author = {Anonymous},
-%	urldate = {2026-06-06},
+%	urldate = {${new Date().toISOString().split("T")[0]}},
 %	date = {2026},
 %}
 \\begin{table*}[t]
