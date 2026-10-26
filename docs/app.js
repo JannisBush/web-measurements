@@ -140,8 +140,27 @@ function normalizeEntry(factor, entry = {}) {
   return normalized;
 }
 
+// localStorage throws a SecurityError when the page is served in a sandbox
+// without allow-same-origin (e.g. anonymous.4open.science). Fall back to
+// in-memory state so the app still works there.
+function safeGetItem(key) {
+  try {
+    return window.localStorage.getItem(key);
+  } catch {
+    return null;
+  }
+}
+
+function safeSetItem(key, value) {
+  try {
+    window.localStorage.setItem(key, value);
+  } catch {
+    // Storage unavailable: drafts are not persisted in this context.
+  }
+}
+
 function loadReport() {
-  const stored = localStorage.getItem(STORAGE_KEY);
+  const stored = safeGetItem(STORAGE_KEY);
   if (!stored) return clone(defaultReport);
 
   try {
@@ -175,7 +194,7 @@ function normalizeReport(input) {
 }
 
 function saveReport() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(report));
+  safeSetItem(STORAGE_KEY, JSON.stringify(report));
 }
 
 function ensureFactorState(factorId) {
@@ -1136,9 +1155,9 @@ function bindEvents() {
 
   document.querySelector("#copyExport").addEventListener("click", async () => {
     elements.exportOutput.select();
-    if (navigator.clipboard) {
+    try {
       await navigator.clipboard.writeText(elements.exportOutput.value);
-    } else {
+    } catch {
       document.execCommand("copy");
     }
   });
