@@ -159,6 +159,19 @@ function safeSetItem(key, value) {
   }
 }
 
+// Sandboxed pages (e.g. anonymous.4open.science, which sends a CSP "sandbox"
+// header without allow-same-origin/allow-downloads) block both storage and
+// file downloads. Blocked storage is a reliable signal for that sandbox; it
+// also works on file:// pages, where storage and downloads are allowed.
+const IS_SANDBOXED = (() => {
+  try {
+    window.localStorage.getItem(STORAGE_KEY);
+    return false;
+  } catch {
+    return true;
+  }
+})();
+
 function loadReport() {
   const stored = safeGetItem(STORAGE_KEY);
   if (!stored) return clone(defaultReport);
@@ -1151,6 +1164,12 @@ function bindEvents() {
   document.querySelector("#downloadJson").addEventListener("click", () => {
     const slug = report.metadata.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "") || "web-measurement-report";
     download(`${slug}.json`, JSON.stringify(report, null, 2), "application/json");
+    if (IS_SANDBOXED) {
+      alert(
+        "Download not working in a sandboxed environment such as Anonymous GitHub (anonymous.4open.science).\n\n" +
+        "To save your report, copy the JSON from the Export section instead."
+      );
+    }
   });
 
   document.querySelector("#copyExport").addEventListener("click", async () => {
