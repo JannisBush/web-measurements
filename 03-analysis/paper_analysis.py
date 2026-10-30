@@ -1412,6 +1412,11 @@ def _(ast, df):
     df["factorcats_mentioned_all"] = df["factorcats_mentioned_count"] == 6
     df["env_mentioned"] = df["78-q-p3-factors-3-factorscat"].fillna('[]').apply(ast.literal_eval).apply(lambda x: True if "Crawling Environment" in x else False)
     df["lim_section"] = df["89-q-p4-practices-2-limitationsloc"].str.contains("Own section")
+
+    df["code_avail"] = df["95-q-p4-practices-7-code"].isin(["['Yes']", "['Partially']", "['Dead link']", "['Empty repo']"])
+    df["data_avail"] = df["96-q-p4-practices-8-data"].isin(["['Yes']", "['Partially']"])
+    df["geo_stated_no"] = df["50-q-p2-setup-env-4-geo"] == "['Unclear/not reported']"
+
     return
 
 
@@ -1429,7 +1434,11 @@ def _(df, pl, svy):
                 "factorcats_mentioned_all",
                 "env_mentioned",
                 "lim_section",
-                "91-q-p4-practices-4-ethics"
+                "91-q-p4-practices-4-ethics",
+                "code_avail",
+                "data_avail",
+                "geo_stated_no",
+                "88-q-p4-practices-1-limitations"
             ]
         ]
         .rename(columns={
@@ -1514,6 +1523,22 @@ def _(design, pl, sample, svy, svy_df):
 def _(sample):
     print(sample.estimation.mean("lim_section"))
     print(sample.estimation.mean("91-q-p4-practices-4-ethics"))
+    return
+
+
+@app.cell
+def _(sample):
+    # Comparision
+    print(sample.estimation.mean("code_avail"))
+    print(sample.estimation.mean("data_avail"))
+    print(sample.estimation.mean("91-q-p4-practices-4-ethics"))
+    print(sample.estimation.mean("88-q-p4-practices-1-limitations"))
+    print(sample.estimation.mean("geo_stated_no"))
+    return
+
+
+@app.cell
+def _():
     return
 
 

@@ -2,17 +2,17 @@
 \toprule
 ID & Factor & Description & Mentioned & Tested \\
 \midrule
-\multicolumn{2}{@{}c@{}}{\bfseries Dataset (D)} & & {\bfseries 39} & {\bfseries 16} \\
-D-Site & Website selection & Which sites are chosen? Which list are they coming from? & 30 & 13 \\
+\multicolumn{2}{@{}c@{}}{\bfseries Dataset (D)} & & {\bfseries 42} & {\bfseries 16} \\
+D-Site & Website selection & Which sites are chosen? Which list are they coming from? & 35 & 13 \\
 D-Page & Webpage selection & Which pages are chosen within each site (e.g., internal vs landing-pages only)? & 13 & 2 \\
 D-Other & Other dataset factors & Other issues with input dataset such as interacting with sites during the measurement (notification) or errornous data (e.g., HAR file issues). & 12 & 1 \\
 \midrule
-\multicolumn{2}{@{}c@{}}{\bfseries Crawler Basis (B)} & & {\bfseries 24} & {\bfseries 16} \\
-B-Instr & Instrumentation & Measurement instrumentation technologies, e.g., custom JS code or Selenium that can be detected or does not support modern ECMAScript. & 12 & 4 \\
-B-Brow & Browser & Browser used for the crawl. & 11 & 4 \\
-B-Set & Settings & Additional configuration of the browser or tools. & 7 & 9 \\
-B-Type & Type of crawler & Whether the crawler is browser-based or non-browser based. & 7 & 2 \\
-B-UA & User-Agent & Spoofed or detected user-agent strings. & 5 & 4 \\
+\multicolumn{2}{@{}c@{}}{\bfseries Crawler Basis (B)} & & {\bfseries 29} & {\bfseries 16} \\
+B-Instr & Instrumentation & Measurement instrumentation technologies, e.g., custom JS code or Selenium that can be detected or does not support modern ECMAScript. & 14 & 4 \\
+B-Set & Settings & Additional configuration of the browser or tools. & 13 & 9 \\
+B-Brow & Browser & Browser used for the crawl. & 12 & 4 \\
+B-Type & Type of crawler & Whether the crawler is browser-based or non-browser based. & 8 & 2 \\
+B-UA & User-Agent & Spoofed or detected user-agent strings. & 6 & 4 \\
 B-Ver & Browser version & Specific browser version used in the crawl. & 4 & 0 \\
 B-Head & Headful vs headless & Whether the browser ran with or without a visible UI. & 3 & 0 \\
 \midrule
@@ -21,11 +21,11 @@ E-Geo & Geolocation & Network location used for the crawl. & 11 & 5 \\
 E-IP & IP type & IP address or network origin type (residential, cloud, university) and reputation. & 9 & 1 \\
 E-Platform & Crawling platform & Hosting environment or machine (Operating System) on which the crawl ran. & 3 & 0 \\
 \midrule
-\multicolumn{2}{@{}c@{}}{\bfseries Measurement Process (P)} & & {\bfseries 24} & {\bfseries 10} \\
-P-Interact & Page interaction & Whether and how the crawler interacts with pages. & 15 & 6 \\
-P-Auth & Authentication & Authentication or login steps performed during crawling. & 10 & 1 \\
-P-State & Stateful vs stateless & Whether each site/page crawl starts clean or reuses accumulated state. & 7 & 2 \\
-P-Cookie & Cookie interaction & Whether the crawler interacted with cookie banners before or during the crawl. & 5 & 2 \\
+\multicolumn{2}{@{}c@{}}{\bfseries Measurement Process (P)} & & {\bfseries 26} & {\bfseries 10} \\
+P-Interact & Page interaction & Whether and how the crawler interacts with pages. & 16 & 6 \\
+P-Auth & Authentication & Authentication or login steps performed during crawling. & 11 & 1 \\
+P-State & Stateful vs stateless & Whether each site/page crawl starts clean or reuses accumulated state. & 8 & 2 \\
+P-Cookie & Cookie interaction & Whether the crawler interacted with cookie banners before or during the crawl. & 6 & 2 \\
 P-Time & Timeouts & Timeouts and dwell time used when loading and visiting pages. & 4 & 0 \\
 \midrule
 \multicolumn{2}{@{}c@{}}{\bfseries Analysis \& Reporting (A)} & & {\bfseries 33} & {\bfseries 0} \\
@@ -33,9 +33,9 @@ A-Detect & Processing code & Rules, heuristics, or classifiers used to process i
 A-Clean & Data cleaning & Filtering, exclusion, or outlier removal during analysis. & 6 & 0 \\
 A-Manual & Manual analysis & Human inspection or manual labeling/interpretation of results. & 3 & 0 \\
 \midrule
-\multicolumn{2}{@{}c@{}}{\bfseries Nature of the Web (N)} & & {\bfseries 26} & {\bfseries 18} \\
+\multicolumn{2}{@{}c@{}}{\bfseries Nature of the Web (N)} & & {\bfseries 33} & {\bfseries 18} \\
+N-Rand & Web randomness & Uncontrolled variability in web behavior across runs. & 18 & 11 \\
+N-Time & Time & When the measurement was performed. & 18 & 8 \\
 N-Bot & Bot detection & Detection or blocking of automated crawlers. & 17 & 1 \\
-N-Time & Time & When the measurement was performed. & 12 & 8 \\
-N-Rand & Web randomness & Uncontrolled variability in web behavior across runs. & 11 & 11 \\
 \bottomrule
 \end{tabular}
