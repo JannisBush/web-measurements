@@ -1421,7 +1421,6 @@ def _(ast, df):
     df["code_avail"] = df["95-q-p4-practices-7-code"].isin(["['Yes']", "['Partially']", "['Dead link']", "['Empty repo']"])
     df["data_avail"] = df["96-q-p4-practices-8-data"].isin(["['Yes']", "['Partially']"])
     df["geo_stated_no"] = df["50-q-p2-setup-env-4-geo"] == "['Unclear/not reported']"
-
     return
 
 
