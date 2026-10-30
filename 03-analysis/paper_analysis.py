@@ -576,6 +576,12 @@ def _(compute_counts, df, mo):
 
 
 @app.cell
+def _(ast, df):
+    df["factor_mentioned_all"] = df["factor_mentioned_all"].apply(ast.literal_eval)
+    return
+
+
+@app.cell
 def _(all_factors, df, mo):
     mo.output.append(df["factor_mentioned_all"].explode().nunique())
     mo.output.append(df["factor_mentioned_all"].str.len().agg(["sum", "mean", "median", "max"]))
@@ -691,7 +697,7 @@ def _(ast, df, mo, tested_factors):
 
 @app.cell
 def _(ast, df):
-    print("Only 5 papers mention factors from all 6 categories, most 1, followed by 2")
+    print("Only 6 papers mention factors from all 6 categories, most 1, followed by 2")
     df["78-q-p3-factors-3-factorscat"].fillna('[]').apply(ast.literal_eval).apply(len).value_counts()
     return
 
@@ -1390,7 +1396,6 @@ def _(mo):
     ## Population Estimates
 
     - Calculate population-weighted estimates and 95% confidence intervals using svy including the finite population correction
-    - **Requires the dataset to include conference and year data**
     """)
     return
 
