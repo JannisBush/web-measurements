@@ -285,7 +285,7 @@ def _(comparison, pd):
             "factor_name": "Other dataset factors",
             "category": "dataset",
             "short_code": "Other",
-            "description": "Other issues with input dataset such as interacting with sites during the measurement (notification) or errornous data (e.g., HAR file issues).",
+            "description": "Other issues with input dataset such as interacting with sites during the measurement (notification) or errorneous data (e.g., HAR file issues).",
             "order": 2
         },
 
@@ -421,7 +421,7 @@ def _(comparison, pd):
             "factor_name": "Processing code",
             "category": "reporting",
             "short_code": "Detect",
-            "description": "Rules, heuristics, or classifiers used to process interpret collected data.",
+            "description": "Rules, heuristics, or classifiers used to process collected data.",
             "order": 19
         },
         {
@@ -1416,6 +1416,7 @@ def _(ast, df):
     df["factorcats_mentioned_count"] = df["78-q-p3-factors-3-factorscat"].fillna('[]').apply(ast.literal_eval).apply(len)
     df["factorcats_mentioned_all"] = df["factorcats_mentioned_count"] == 6
     df["env_mentioned"] = df["78-q-p3-factors-3-factorscat"].fillna('[]').apply(ast.literal_eval).apply(lambda x: True if "Crawling Environment" in x else False)
+    df["bot_mentioned"] = df["84-q-p3-factors-9-other"].fillna('[]').apply(ast.literal_eval).apply(lambda x: True if "Bot detection" in x else False)
     df["lim_section"] = df["89-q-p4-practices-2-limitationsloc"].str.contains("Own section")
 
     df["code_avail"] = df["95-q-p4-practices-7-code"].isin(["['Yes']", "['Partially']", "['Dead link']", "['Empty repo']"])
@@ -1442,7 +1443,9 @@ def _(df, pl, svy):
                 "code_avail",
                 "data_avail",
                 "geo_stated_no",
-                "88-q-p4-practices-1-limitations"
+                "88-q-p4-practices-1-limitations",
+                "bot_mentioned",
+                "24-q-p2-dataset-webpage-2-internal"
             ]
         ]
         .rename(columns={
@@ -1538,6 +1541,8 @@ def _(sample):
     print(sample.estimation.mean("91-q-p4-practices-4-ethics"))
     print(sample.estimation.mean("88-q-p4-practices-1-limitations"))
     print(sample.estimation.mean("geo_stated_no"))
+    print(sample.estimation.mean("bot_mentioned"))
+    print(sample.estimation.mean("24-q-p2-dataset-webpage-2-internal"))
     return
 
 
