@@ -285,7 +285,7 @@ def _(comparison, pd):
             "factor_name": "Other dataset factors",
             "category": "dataset",
             "short_code": "Other",
-            "description": "Other issues with input dataset such as interacting with sites during the measurement (notification) or errorneous data (e.g., HAR file issues).",
+            "description": "Other issues with input dataset such as interacting with sites during the measurement (notification) or erroneous data (e.g., HAR file issues).",
             "order": 2
         },
 
@@ -1422,6 +1422,8 @@ def _(ast, df):
     df["code_avail"] = df["95-q-p4-practices-7-code"].isin(["['Yes']", "['Partially']", "['Dead link']", "['Empty repo']"])
     df["data_avail"] = df["96-q-p4-practices-8-data"].isin(["['Yes']", "['Partially']"])
     df["geo_stated_no"] = df["50-q-p2-setup-env-4-geo"] == "['Unclear/not reported']"
+    df["dataset_mentioned"] = df["78-q-p3-factors-3-factorscat"].fillna('[]').apply(ast.literal_eval).apply(lambda x: True if "Dataset" in x else False)
+    df["no_date"] = ~df["51-q-p2-setup-env-5-time"]
     return
 
 
@@ -1445,7 +1447,9 @@ def _(df, pl, svy):
                 "geo_stated_no",
                 "88-q-p4-practices-1-limitations",
                 "bot_mentioned",
-                "24-q-p2-dataset-webpage-2-internal"
+                "24-q-p2-dataset-webpage-2-internal",
+                "no_date",
+                "dataset_mentioned"
             ]
         ]
         .rename(columns={
@@ -1543,6 +1547,8 @@ def _(sample):
     print(sample.estimation.mean("geo_stated_no"))
     print(sample.estimation.mean("bot_mentioned"))
     print(sample.estimation.mean("24-q-p2-dataset-webpage-2-internal"))
+    print(sample.estimation.mean("dataset_mentioned"))
+    print(sample.estimation.mean("no_date"))
     return
 
 

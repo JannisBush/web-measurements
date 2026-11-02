@@ -911,9 +911,9 @@ function loadExample() {
 // ===================== D-Site =====================
   setRow("D-Site", 0, "D-Site-Source", {
     "D-Site-Source": "Tranco",
-    "D-Site-SourceId": "334VL",
-    "D-Site-Date": "2026-06-01",
-    "D-Site-Link": "https://tranco-list.eu/list/334VL/1000000"
+    "D-Site-SourceId": "V354N",
+    "D-Site-Date": "2026-11-01",
+    "D-Site-Link": "https://tranco-list.eu/list/V354N/1000000"
   }, "reported", "Default config");
 
   setRow("D-Site", 0, "D-Site-Count", {
@@ -958,7 +958,7 @@ function loadExample() {
   // ===================== B-Instr =====================
   setRow("B-Instr", 0, "B-Instr-Tool", {
     "B-Instr-Tool": "Selenium",
-    "B-Instr-Version": "4.40"
+    "B-Instr-Version": "4.51.0"
   }, "reported", "");
 
   setRow("B-Instr", 0, "B-Instr-Modification", {
@@ -969,7 +969,7 @@ function loadExample() {
   // ===================== B-Brow =====================
   setRow("B-Brow", 0, "B-Brow-Browser", {
     "B-Brow-Browser": "Chromium",
-    "B-Brow-Version": "148.0.7778.96"
+    "B-Brow-Version": "159.0.8137.0"
   }, "not_reported", "");
 
 
@@ -1084,11 +1084,11 @@ function loadExample() {
   }, "reported", "");
 
   setRow("N-Time", 0, "N-Time-Date1", {
-    "N-Time-Date1": "2026-06-01"
+    "N-Time-Date1": "2026-11-01"
   }, "reported", "");
 
   setRow("N-Time", 0, "N-Time-Date2", {
-    "N-Time-Date2": "2026-06-02"
+    "N-Time-Date2": "2026-11-02"
   }, "reported", "");
 
 
